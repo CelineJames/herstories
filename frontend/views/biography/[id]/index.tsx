@@ -41,7 +41,7 @@ export default function BiographyDetail({ id }: { id: string }) {
     const fetchBio = async () => {
       try {
         const res = await fetch(
-          `http://localhost:8000/biographies/${parseInt(id)}`
+          `https://herstories-backend.onrender.com/biographies/${parseInt(id)}`
         );
         if (!res.ok) throw new Error("Failed to fetch biography");
         const data = await res.json();
@@ -61,13 +61,18 @@ export default function BiographyDetail({ id }: { id: string }) {
     return <p className="text-center py-10 mt-20">Biography not found.</p>;
 
   return (
-    <div className="max-w-[95%] md:max-w-[80%] mx-auto p-10 mt-20 space-y-10">
-      <div className="relative w-full h-[80vh] mb-6 rounded-lg overflow-hidden">
+    <div className="max-w-[100%] md:max-w-[80%] mx-auto p-2 md:p-10 mt-20 space-y-10">
+      <div className="relative w-full h-[400px] md:h-[80vh] mb-6 rounded-lg overflow-hidden">
         <Image
-          src={bio.image}
+          src={
+            bio.image.startsWith("http")
+              ? bio.image
+              : `https://herstories-backend.onrender.com/${bio.image}`
+          }
           alt={`Picture of ${bio.name}`}
           fill
-          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-contain md:object-cover "
           priority
         />
       </div>

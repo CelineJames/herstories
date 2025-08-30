@@ -2,11 +2,10 @@
 import BiographyDetail from "@/views/biography/[id]";
 
 type Props = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 };
 
 export default async function BiographyPage({ params }: Props) {
-  return <BiographyDetail id={params.id} />;
+  const resolvedParams = await params;
+  return <BiographyDetail id={resolvedParams.id} />;
 }

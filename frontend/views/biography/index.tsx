@@ -1,144 +1,142 @@
 "use client";
 
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { fetchBiographies, fetchCategories } from "@/utils/api";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-// import { Flag } from "lucide-react";
+import Link from "next/link";
 
-type Biography = {
+interface Biography {
   id: number;
   name: string;
-  image: string;
-  flag: string;
   summary: string;
+  image: string;
   country: string;
-  category: string;
-  details: string;
-};
+}
 
-export default function BiographyList(): React.ReactElement {
+export default function BiographyList() {
   const [biographies, setBiographies] = useState<Biography[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
+  const [page, setPage] = useState(1);
+  const [limit] = useState(6);
+  const [total, setTotal] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(15);
-  const [total, setTotal] = useState(0);
 
-  const fetchBiographies = async (
-    page: number,
-    limit: number,
-    search: string,
-    category: string
-  ) => {
-    const skip = (page - 1) * limit;
-    const params = new URLSearchParams({
-      skip: skip.toString(),
-      limit: limit.toString(),
-    });
-    if (search) params.append("search", search);
-    if (category) params.append("category", category);
-
-    const res = await fetch(`http://localhost:8000/biographies?${params}`);
-    const data = await res.json();
-    setBiographies(data.biographies || data);
-    setTotal(data.total || 0);
-  };
-
-  const fetchCategories = async () => {
-    try {
-      const res = await fetch("http://localhost:8000/category");
-      const data = await res.json();
-      setCategories(data.categories || []);
-    } catch (error) {
-      console.error("Failed to fetch categories", error);
-    }
-  };
+  const router = useRouter();
+  // const searchParams = useSearchParams();
 
   useEffect(() => {
-    const updateLimit = () => {
-      setLimit(window.innerWidth < 768 ? 10 : 15);
-    };
-    updateLimit();
-    window.addEventListener("resize", updateLimit);
-    return () => window.removeEventListener("resize", updateLimit);
+    fetchCategories()
+      .then((data) => setCategories(data.categories || []))
+      .catch((error) => console.error("Failed to fetch categories", error));
   }, []);
 
   useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  useEffect(() => {
-    fetchBiographies(page, limit, searchTerm, selectedCategory);
+    fetchBiographies(page, limit, searchTerm, selectedCategory)
+      .then((data) => {
+        setBiographies(data.biographies || data);
+        setTotal(data.total || 0);
+      })
+      .catch((error) => console.error("Failed to fetch biographies", error));
   }, [page, limit, searchTerm, selectedCategory]);
 
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <main className="px-4 py-8 mt-20">
-      <h1 className="text-4xl text-center font-semibold mb-6 font-alnevrada">
+    <div className="p-6 max-w-7xl mx-auto mt-20">
+      <h1 className="font-alnevrada font-bold text-4xl text-center mb-8">
         Biographies
       </h1>
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+        <input
+          type="text"
+          placeholder="Search biographies..."
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setPage(1);
+          }}
+          className="w-full md:w-1/3 p-2 border rounded"
+        />
 
-      <div className="md:max-w-[80%] mx-auto">
-        {/* Search & Filter */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-          <input
-            type="text"
-            placeholder="Search by name..."
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setPage(1);
-            }}
-            className="px-4 py-2 border border-gray-300 rounded w-full md:max-w-[450px]"
-          />
-          <select
-            value={selectedCategory}
-            onChange={(e) => {
-              setSelectedCategory(e.target.value);
-              setPage(1);
-            }}
-            className="px-4 py-2 border border-gray-300 rounded w-full md:max-w-[450px]"
-          >
-            <option value="">All Categories</option>
-            {categories.map((cat) => (
-              <option key={cat} value={cat.trim()}>
-                {cat.trim()}
-              </option>
-            ))}
-          </select>
-        </div>
+        <select
+          value={selectedCategory}
+          onChange={(e) => {
+            setSelectedCategory(e.target.value);
+            setPage(1);
+          }}
+          className="w-full md:w-1/4 p-2 border rounded"
+        >
+          <option value="">All Categories</option>
+          {categories.map((category: string) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
       </div>
 
-      {biographies.length === 0 ? (
+      {!biographies ? (
         <p className="text-gray-500 text-center">No biographies found.</p>
       ) : (
         <>
-          <div className="flex flex-wrap justify-center md:justify-center items-start gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {biographies.map((bio) => (
               <div
                 key={bio.id}
-                className="bg-white rounded-xl shadow p-4 w-full max-w-[300px]"
+                className="bg-white rounded shadow p-4 hover:shadow-lg transition cursor-pointer"
+                onClick={() => router.push(`/biography/${bio.id}`)}
               >
-                <div className="relative aspect-[1/1] rounded-xl overflow-hidden mb-4">
+                {/* <div className="relative w-full h-48 mb-4 rounded overflow-hidden">
+              <Image
+                src={
+                  bio.image.startsWith("http")
+                    ? bio.image
+                    : `https://herstories-backend.onrender.com/${bio.image}`
+                }
+                alt={bio.name}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute top-2 right-2 w-8 h-6 rounded overflow-hidden border border-white shadow">
+                {bio.country && (
                   <Image
-                    src={bio.image}
+                    src={`https://herstories-backend.onrender.com/static/flags/${bio.country}.png`}
+                    alt={bio.country}
+                    width={24}
+                    height={24}
+                  />
+                )}
+              </div>
+            </div> */}
+
+                {/* new */}
+                <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                  <Image
+                    src={
+                      bio.image.startsWith("http")
+                        ? bio.image
+                        : `https://herstories-backend.onrender.com/${bio.image}`
+                    }
                     alt={bio.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                   />
-                  <div className="absolute top-2 right-2 w-8 h-6 rounded overflow-hidden border border-white shadow">
-                    <Image
-                      src={`http://localhost:8000/static/flags/${bio.country}.png`}
-                      alt={`${bio.country} flag`}
-                      fill
-                      className="object-cover"
-                    />
+                  <div className="absolute top-[6px] left-[6px] w-8 h-6 rounded overflow-hidden border border-white shadow ">
+                    {bio.country && (
+                      <Image
+                        src={`https://herstories-backend.onrender.com/static/flags/${bio.country}.png`}
+                        alt={bio.country}
+                        fill
+                        className="object-cover"
+                      />
+                    )}
                   </div>
                 </div>
-                <h2 className="font-semibold text-lg">{bio.name}</h2>
-                <p className="text-sm text-gray-600 mt-1">{bio.summary}</p>
+                <h3 className="text-lg font-bold mb-1">{bio.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">{bio.summary}</p>
                 <Link
                   href={`/biography/${bio.id}`}
                   className="text-primary font-medium mt-2 inline-block"
@@ -148,43 +146,53 @@ export default function BiographyList(): React.ReactElement {
               </div>
             ))}
           </div>
-
-          {/* Pagination Controls */}
-          <div className="mt-8 flex justify-center items-center gap-2 flex-wrap">
-            <button
-              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-              disabled={page === 1}
-              className="px-4 py-2 bg-gray-200 text-gray-700 rounded disabled:opacity-50"
-            >
-              Previous
-            </button>
-
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
-              <button
-                key={num}
-                onClick={() => setPage(num)}
-                className={`px-4 py-2 rounded ${
-                  num === page
-                    ? "bg-primary text-white"
-                    : "bg-gray-100 text-gray-700"
-                }`}
-              >
-                {num}
-              </button>
-            ))}
-
-            <button
-              onClick={() =>
-                setPage((prev) => (prev < totalPages ? prev + 1 : prev))
-              }
-              disabled={page === totalPages}
-              className="px-4 py-2 bg-gray-200 text-gray-700 rounded disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
         </>
       )}
-    </main>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-8 gap-2">
+          <button
+            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+            disabled={page === 1}
+            className={`px-4 py-2 rounded transition-all ${
+              page === 1
+                ? "bg-primary/45 text-black/50 cursor-not-allowed"
+                : "bg-primary text-white hover:bg-primary/90"
+            }`}
+          >
+            Previous
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage(i + 1)}
+              className={`px-4 py-2 border rounded transition-all ${
+                page === i + 1
+                  ? "bg-primary text-white"
+                  : "bg-white text-black hover:bg-gray-100"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() =>
+              setPage((prev) => (prev < totalPages ? prev + 1 : prev))
+            }
+            disabled={page === totalPages}
+            className={`px-4 py-2 rounded transition-all ${
+              page === totalPages
+                ? "bg-primary/45 text-black/40 cursor-not-allowed"
+                : "bg-primary text-white hover:bg-primary/90"
+            }`}
+          >
+            Next
+          </button>
+        </div>
+      )}
+    </div>
   );
 }

@@ -1,9 +1,10 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useTexture } from "@react-three/drei";
+import { OrbitControls, Html, useTexture } from "@react-three/drei";
 // import * as THREE from "three";
 import { Suspense } from "react";
+import { useState } from "react";
 
 function Room() {
   const walls = useTexture("/walls.jpg");
@@ -58,11 +59,16 @@ function Room() {
 function Frame({
   position = [0, 0, 0],
   imageUrl,
+  Iname,
+  country,
 }: {
   position: [number, number, number];
   imageUrl: string;
+  Iname: string;
+  country: string;
 }) {
   const texture = useTexture(imageUrl);
+  const [hovered, setHovered] = useState(false);
 
   const imageSize = 2; // Increased from 1 → 2
   const borderSize = 2.2; // Slightly bigger frame, increased proportionally
@@ -74,12 +80,38 @@ function Frame({
         <planeGeometry args={[borderSize, borderSize]} />
         <meshBasicMaterial color="black" />
       </mesh>
-
       {/* The image itself */}
-      <mesh>
+      <mesh
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+      >
         <planeGeometry args={[imageSize, imageSize]} />
         <meshBasicMaterial map={texture} toneMapped={false} />
       </mesh>
+      {hovered && (
+        <Html position={[0.2, 2, 0]} center className="pointer-events-none">
+          <div
+            style={{
+              backgroundColor: "black",
+              padding: "0.25rem 0.5rem",
+              borderRadius: "4px",
+            }}
+          >
+            <p
+              style={{
+                // backgroundColor: "red",
+                color: "white",
+                fontSize: "12px",
+                whiteSpace: "nowrap",
+                textAlign: "center",
+              }}
+            >
+              {Iname}
+              <br /> {country}
+            </p>
+          </div>
+        </Html>
+      )}
     </group>
   );
 }
@@ -92,50 +124,127 @@ function BrickWallScene() {
 
       {/* Frames on back wall */}
       {/* column 1 */}
-      <Frame position={[-9, 2.5, -14.9]} imageUrl="/assets/nawal-sadami.jpeg" />
-      <Frame position={[-9, 0.1, -14.9]} imageUrl="/assets/ilwad-elman.jpg" />
-      <Frame position={[-9, -2.3, -14.9]} imageUrl="/assets/makemba.jpeg" />
+      <Frame
+        position={[-9, 2.5, -14.9]}
+        imageUrl="/assets/nawal-sadami.jpeg"
+        Iname="Nawal Sadawi"
+        country="Egypt"
+      />
+      <Frame
+        position={[-9, 0.1, -14.9]}
+        imageUrl="/assets/ilwad-elman.jpg"
+        Iname="Ilwad ELman"
+        country="Egypt"
+      />
+      <Frame
+        position={[-9, -2.3, -14.9]}
+        imageUrl="/assets/makemba.jpeg"
+        Iname="Miriam Makemba"
+        country="South-Africa"
+      />
       {/* column 2 */}
       <Frame
         position={[-6.4, 2.5, -14.9]}
         imageUrl="/assets/ngozi-iweala.jpg"
+        Iname="Ngozi Iweala"
+        country="Nigeria"
       />
       <Frame
         position={[-6.4, 0.1, -14.9]}
         imageUrl="/assets/yaa-asantewa.webp"
+        Iname="Nawal Sadawi"
+        country="Egypt"
       />
       <Frame
         position={[-6.4, -2.3, -14.9]}
         imageUrl="/assets/charlotte-maxeke.jpeg"
+        Iname="Charlotte Maxeke"
+        country="South-Africa"
       />
       {/* column 3 */}
-      <Frame position={[-3.8, 2.5, -14.9]} imageUrl="/assets/adadevoh.jpeg" />
-      <Frame position={[-3.8, 0.1, -14.9]} imageUrl="/assets/ama-ataido.jpeg" />
+      <Frame
+        position={[-3.8, 2.5, -14.9]}
+        imageUrl="/assets/adadevoh.jpeg"
+        Iname="Nawal Adedevoh"
+        country="Nigeria"
+      />
+      <Frame
+        position={[-3.8, 0.1, -14.9]}
+        imageUrl="/assets/ama-ataido.jpeg"
+        Iname="Nawal Sadawi"
+        country="Ghana"
+      />
       <Frame
         position={[-3.8, -2.3, -14.9]}
         imageUrl="/assets/julienne-lusenge.webp"
+        Iname="Nawal Sadawi"
+        country="Egypt"
       />
       {/* column 4 */}
-      <Frame position={[-1.3, 2.5, -14.9]} imageUrl="/assets/sirLeaf.jpg" />
+      <Frame
+        position={[-1.3, 2.5, -14.9]}
+        imageUrl="/assets/sirLeaf.jpg"
+        Iname="Ellen Sirleaf"
+        country="Liberia"
+      />
       <Frame
         position={[-1.3, 0.1, -14.9]}
         imageUrl="/assets/tsitsi-dangaremba.jpeg"
+        Iname="Nawal Sadawi"
+        country="Egypt"
       />
       {/* column 5 */}
-      <Frame position={[1.3, 2.5, -14.9]} imageUrl="/assets/makemba.jpeg" />
+      <Frame
+        position={[1.3, 2.5, -14.9]}
+        imageUrl="/assets/makemba.jpeg"
+        Iname="Nawal Sadawi"
+        country="Egypt"
+      />
       <Frame
         position={[1.3, 0.1, -14.9]}
         imageUrl="/assets/fatou-bensouda.jpg"
+        Iname="Nawal Sadawi"
+        country="Egypt"
       />
       {/* column 6 */}
-      <Frame position={[3.8, 2.5, -14.9]} imageUrl="/assets/adiche.jpg" />
-      <Frame position={[3.8, 0.1, -14.9]} imageUrl="/assets/ala-salah.avif" />
+      <Frame
+        position={[3.8, 2.5, -14.9]}
+        imageUrl="/assets/adiche.jpg"
+        Iname="Chimamanda Adichie"
+        country="Nigeria"
+      />
+      <Frame
+        position={[3.8, 0.1, -14.9]}
+        imageUrl="/assets/ala-salah.avif"
+        Iname="Nawal Sadawi"
+        country="Egypt"
+      />
       {/* column 7 */}
-      <Frame position={[6.4, 2.5, -14.9]} imageUrl="/assets/amel-kabourl.jpg" />
-      <Frame position={[6.4, 0.1, -14.9]} imageUrl="/assets/funmi-kuti.jpeg" />
+      <Frame
+        position={[6.4, 2.5, -14.9]}
+        imageUrl="/assets/amel-kabourl.jpg"
+        Iname="Nawal Sadawi"
+        country="Egypt"
+      />
+      <Frame
+        position={[6.4, 0.1, -14.9]}
+        imageUrl="/assets/funmi-kuti.jpeg"
+        Iname="Nawal Sadawi"
+        country="Egypt"
+      />
       {/* column 8 */}
-      <Frame position={[9, 2.5, -14.9]} imageUrl="/assets/joyce-Banda.jpg" />
-      <Frame position={[9, 0.1, -14.9]} imageUrl="/assets/wangari2.jpeg" />
+      <Frame
+        position={[9, 2.5, -14.9]}
+        imageUrl="/assets/joyce-Banda.jpg"
+        Iname="Nawal Sadawi"
+        country="Egypt"
+      />
+      <Frame
+        position={[9, 0.1, -14.9]}
+        imageUrl="/assets/wangari2.jpeg"
+        Iname="Nawal Sadawi"
+        country="Egypt"
+      />
 
       {/* Lights */}
       <ambientLight intensity={1.2} />

@@ -1,28 +1,28 @@
 import Image from "next/image";
 import Button from "@/components/button";
 
-const team = [
-  {
-    image: "/assets/team.png",
-    name: "Itoro James",
-    position: "Founder & Curator",
-  },
-  {
-    image: "/assets/team.png",
-    name: "Kemi Adeyemi",
-    position: "Archivist",
-  },
-  {
-    image: "/assets/team.png",
-    name: "Chinwe Okoro",
-    position: "Research Lead",
-  },
-  {
-    image: "/assets/team.png",
-    name: "Celestina Nwokedi",
-    position: "Tech Lead",
-  },
-];
+// const team = [
+//   {
+//     image: "/assets/team.png",
+//     name: "Itoro James",
+//     position: "Founder & Curator",
+//   },
+//   {
+//     image: "/assets/team.png",
+//     name: "Kemi Adeyemi",
+//     position: "Archivist",
+//   },
+//   {
+//     image: "/assets/team.png",
+//     name: "Chinwe Okoro",
+//     position: "Research Lead",
+//   },
+//   {
+//     image: "/assets/team.png",
+//     name: "Celestina Nwokedi",
+//     position: "Tech Lead",
+//   },
+// ];
 
 export default function AboutUs(): React.ReactElement {
   return (
@@ -73,7 +73,7 @@ export default function AboutUs(): React.ReactElement {
         {/* Image Section */}
         <div className="w-full md:w-[40%] max-w-[400px] aspect-[1/1] rounded-xl overflow-hidden relative">
           <Image
-            src="/assets/ngozi-iweala.jpg"
+            src="/assets/aboutus-2.jpg"
             alt=""
             fill
             className="object-cover"
@@ -119,7 +119,7 @@ export default function AboutUs(): React.ReactElement {
       <div className="flex flex-col md:flex-row md:justify-center items-start md:items-center gap-10 mt-24 px-6 md:w-[90%] mx-auto">
         <div className="relative w-full md:w-[40%] max-w-[400px] h-[500px] rounded-xl overflow-hidden">
           <Image
-            src="/assets/ngozi-iweala.jpg"
+            src="/assets/aboutus-1.webp"
             alt="Ngozi Okonjo-Iweala"
             fill
             className="object-cover"
@@ -174,7 +174,7 @@ export default function AboutUs(): React.ReactElement {
         {/* Image Section */}
         <div className="w-full md:w-[40%] max-w-[400px] aspect-[1/1] rounded-xl overflow-hidden relative">
           <Image
-            src="/assets/ngozi-iweala.jpg"
+            src="/assets/community-work.jpg"
             alt=""
             fill
             className="object-cover"
@@ -244,7 +244,7 @@ export default function AboutUs(): React.ReactElement {
       {/* supporters section to be added */}
 
       {/* Our team */}
-      <div className="mt-14 ">
+      {/* <div className="mt-14 ">
         <div className="text-center mb-8">
           <Button>Our team</Button>
           <h2 className="font-alnevrada text-2xl md:text-3xl w-[60%] mx-auto mb-4">
@@ -277,7 +277,7 @@ export default function AboutUs(): React.ReactElement {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
