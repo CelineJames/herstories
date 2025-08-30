@@ -88,36 +88,13 @@ export default function BiographyList() {
                 className="bg-white rounded shadow p-4 hover:shadow-lg transition cursor-pointer"
                 onClick={() => router.push(`/biography/${bio.id}`)}
               >
-                {/* <div className="relative w-full h-48 mb-4 rounded overflow-hidden">
-              <Image
-                src={
-                  bio.image.startsWith("http")
-                    ? bio.image
-                    : `https://herstories-backend.onrender.com/${bio.image}`
-                }
-                alt={bio.name}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute top-2 right-2 w-8 h-6 rounded overflow-hidden border border-white shadow">
-                {bio.country && (
-                  <Image
-                    src={`https://herstories-backend.onrender.com/static/flags/${bio.country}.png`}
-                    alt={bio.country}
-                    width={24}
-                    height={24}
-                  />
-                )}
-              </div>
-            </div> */}
-
                 {/* new */}
                 <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
                   <Image
                     src={
                       bio.image.startsWith("http")
                         ? bio.image
-                        : `https://herstories-backend.onrender.com/${bio.image}`
+                        : `${process.env.NEXT_PUBLIC_API_URL}/${bio.image}`
                     }
                     alt={bio.name}
                     fill
