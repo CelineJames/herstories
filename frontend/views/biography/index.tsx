@@ -27,6 +27,8 @@ export default function BiographyList() {
   // const searchParams = useSearchParams();
 
   useEffect(() => {
+    // console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+
     fetchCategories()
       .then((data) => setCategories(data.categories || []))
       .catch((error) => console.error("Failed to fetch categories", error));
@@ -91,16 +93,18 @@ export default function BiographyList() {
                 {/* new */}
                 <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
                   <Image
-                    src={
-                      bio.image.startsWith("http")
-                        ? bio.image
-                        : `${process.env.NEXT_PUBLIC_API_URL}/${bio.image}`
-                    }
+                    src={`https://herstories-backend.onrender.com/static/flags/${bio.country}.png`}
+                    // src={
+                    //   bio.image.startsWith("http")
+                    //     ? bio.image
+                    //     : `${process.env.NEXT_PUBLIC_API_URL}/${bio.image}`
+
                     alt={bio.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                   />
+
                   <div className="absolute top-[6px] left-[6px] w-8 h-6 rounded overflow-hidden border border-white shadow ">
                     {bio.country && (
                       <Image
