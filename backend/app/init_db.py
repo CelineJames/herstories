@@ -15,9 +15,9 @@ db = SessionLocal()
 biographies = [
     Biography(
         name="Chimamanda Ngozi Adichie",
-        image="http://localhost:8000/static/adiche.jpg",
+        image="adiche.jpg",
         country="nigeria",
-        flag="http://localhost:8000/static/flags/nigeria.png",
+        flag="flags/nigeria.png",
         category="Feminist",
         summary="Award-winning Nigerian writer and feminist icon.",
         details={
@@ -91,9 +91,9 @@ biographies = [
     ),
     Biography(
         name="Funmilayo Ransome-Kuti",
-        image="http://localhost:8000/static/funmi-kuti.jpeg",
+        image="funmi-kuti.jpeg",
         country="nigeria",
-        flag="http://localhost:8000/static/flags/nigeria.png",
+        flag="flags/nigeria.png",
         category="Activist",
         summary="Trailblazing Nigerian women’s rights activist and nationalist.",
         details={
@@ -151,9 +151,9 @@ biographies = [
     ),
     Biography(
     name="Gaositwe Chiepe",
-    image="http://localhost:8000/static/chiepe.jpg",
+    image="chiepe.jpg",
     country="botswana",
-    flag="http://localhost:8000/static/flags/botswana.png",
+    flag="flags/botswana.png",
     category="Diplomat & Educator",
     summary="Trailblazing diplomat and Botswana’s first female cabinet minister.",
     details={
@@ -204,9 +204,9 @@ biographies = [
     ),
     Biography(
     name="Unity Dow",
-    image="http://localhost:8000/static/unity-dow.jpg",
+    image="unity-dow.jpg",
     country="botswana",
-    flag="http://localhost:8000/static/flags/botswana.png",
+    flag="flags/botswana.png",
     category="Jurist & Author",
     summary="Botswana’s first female High Court judge and acclaimed human rights advocate.",
     details={
@@ -258,8 +258,8 @@ biographies = [
     ),
     Biography(
         name="Wangari Maathai",
-        image="http://localhost:8000/static/wangari.jpeg",
-        flag="http://localhost:8000/static/flags/kenya.png",
+        image="wangari.jpeg",
+        flag="flags/kenya.png",
         country="kenya",
         category="Activist",
         summary="Kenyan environmentalist, political activist, and Nobel Peace laureate.",
@@ -311,9 +311,9 @@ biographies = [
 
     Biography(
         name="Fumilayo Adadevoh",
-        image="http://localhost:8000/static/adadevoh.jpeg",
+        image="adadevoh.jpeg",
         country="nigeria",
-        flag="http://localhost:8000/static/flags/nigeria.png",
+        flag="flags/nigeria.png",
         category="Activist",
         summary="Nigerian doctor who halted the spread of Ebola in Lagos.",
         details={
@@ -357,9 +357,9 @@ biographies = [
 
     Biography(
         name="Ngozi Okonjo‑Iweala",
-        image="http://localhost:8000/static/iweala.jpeg",
+        image="iweala.jpeg",
         country="nigeria",
-        flag="http://localhost:8000/static/flags/nigeria.png",
+        flag="flags/nigeria.png",
         category="Economist",
         summary="Nigerian economist, former Finance Minister and first female Director‑General of the WTO.",
         details={
@@ -412,9 +412,9 @@ biographies = [
 
     Biography(
         name="Ellen Johnson Sirleaf",
-        image="http://localhost:8000/static/ellen.jpg",
+        image="ellen.jpg",
         country="liberia",
-        flag="http://localhost:8000/static/flags/liberia.png",
+        flag="flags/liberia.png",
         category="Stateswoman",
         summary="Liberian economist and Africa’s first elected female head of state, Nobel Peace Prize laureate.",
         details={
@@ -463,9 +463,9 @@ biographies = [
 
     Biography(
         name="Miriam Makeba",
-        image="http://localhost:8000/static/makeba.jpeg",
+        image="makeba.jpeg",
         country="south-africa",
-        flag="http://localhost:8000/static/flags/south-africa.png",
+        flag="flags/south-africa.png",
         category="Artist",
         summary="South African singer, civil rights activist and global musical icon known as ‘Mama Africa.’",
         details={
@@ -515,9 +515,9 @@ biographies = [
 
     Biography(
         name="Gambo Sawaba",
-        image="http://localhost:8000/static/sawaba.jpeg",
+        image="sawaba.jpeg",
         country="nigeria",
-        flag="http://localhost:8000/static/flags/nigeria.png",
+        flag="flags/nigeria.png",
         category="Activist",
         summary="Homie Hajiya Gambo Sawaba, pioneering northern Nigerian women’s rights activist and politician.",
         details={
@@ -563,9 +563,9 @@ biographies = [
 
     Biography(
         name="Ala Salah",
-        image="http://localhost:8000/static/ala-salah.avif",
+        image="ala-salah.avif",
         country="egypt",
-        flag="http://localhost:8000/static/flags/egypt.png",
+        flag="flags/egypt.png",
         category="Physician",
         summary="Egypt‑born anesthesiologist and sustainability leader.",
         details={
@@ -607,9 +607,9 @@ biographies = [
 
     Biography(
         name="Amel Karboul",
-        image="http://localhost:8000/static/amel-karboul.jpg",
+        image="amel-karboul.jpg",
         country="tunisia",
-        flag="http://localhost:8000/static/flags/tunisia.png",
+        flag="flags/tunisia.png",
         category="Leader",
         summary="Tunisian author, speaker, former tourism minister and education innovator.",
         details={
@@ -660,9 +660,9 @@ biographies = [
 
     Biography(
         name="Aoua Keita",
-        image="http://localhost:8000/static/aoua-keita.jpeg",
+        image="aoua-keita.jpeg",
         country="mali",
-        flag="http://localhost:8000/static/flags/mali.png",
+        flag="flags/mali.png",
         category="Activist",
         summary="Malian midwife, writer, politician and independence pioneer.",
         details={
@@ -706,9 +706,9 @@ biographies = [
 
     Biography(
         name="Ilwad Elman",
-        image="http://localhost:8000/static/ilwad-elman.jpg",
+        image="ilwad-elman.jpg",
         country="somalia",
-        flag="http://localhost:8000/static/flags/somalia.png",
+        flag="flags/somalia.png",
         category="Human Rights",
         summary="Somali‑Canadian peacebuilder and humanitarian activist.",
         details={
@@ -750,9 +750,9 @@ biographies = [
 
     Biography(
         name="Joyce Banda",
-        image="http://localhost:8000/static/joyce-banda.jpg",
+        image="joyce-banda.jpg",
         country="malawi",
-        flag="http://localhost:8000/static/flags/malawi.png",
+        flag="flags/malawi.png",
         category="Stateswoman",
         summary="Malawian politician, philanthropist and Malawi’s first female President.",
         details={
@@ -799,9 +799,9 @@ biographies = [
 
     Biography(
         name="Nawal el‑Saadawi",
-        image="http://localhost:8000/static/nawal-sadawi.avif",
+        image="nawal-sadawi.avif",
         country="egypt",
-        flag="http://localhost:8000/static/flags/egypt.png",
+        flag="flags/egypt.png",
         category="Feminist",
         summary="Egyptian physician, psychiatrist, author and pioneering feminist advocate.",
         details={
@@ -845,9 +845,9 @@ biographies = [
 
     Biography(
         name="Tsitsi Dangarembga",
-        image="http://localhost:8000/static/tsitsi-dangaremba.jpg",
+        image="tsitsi-dangaremba.jpg",
         country="zimbabwe",
-        flag="http://localhost:8000/static/flags/zimbabwe.png",
+        flag="flags/zimbabwe.png",
         category="Author",
         summary="Zimbabwean novelist, filmmaker and cultural activist.",
         details={
@@ -893,9 +893,9 @@ biographies = [
 
     Biography(
         name="Charlotte Maxeke",
-        image="http://localhost:8000/static/charlotte-maxeke.jpeg",
+        image="charlotte-maxeke.jpeg",
         country="south-africa",
-        flag="http://localhost:8000/static/flags/south-africa.png",
+        flag="flags/south-africa.png",
         category="Activist, Educator, Feminist",
         summary="South African pioneer: first Black woman university graduate, activist, educator, and founding feminist leader.",
         details={
@@ -943,9 +943,9 @@ biographies = [
 
     Biography(
         name="Ama Ata Aidoo",
-        image="http://localhost:8000/static/ama-ataido.jpeg",
+        image="ama-ataido.jpeg",
         country="ghana",
-        flag="http://localhost:8000/static/flags/ghana.png",
+        flag="flags/ghana.png",
         category="Author, Feminist, Educator, Politician",
         summary="Ghanaian author, playwright, feminist thinker and former education minister.",
         details={
@@ -989,9 +989,9 @@ biographies = [
 
     Biography(
         name="Aïcha Fofana",
-        image="http://localhost:8000/static/aicha-fofana.jpeg",
+        image="aicha-fofana.jpeg",
         country="mali",
-        flag="http://localhost:8000/static/flags/mali.png",
+        flag="flags/mali.png",
         category="Author, Activist, Feminist",
         summary="First Malian woman to publish a novel and a dedicated advocate for women’s rights.",
         details={
@@ -1035,9 +1035,9 @@ biographies = [
 
     Biography(
         name="Adame Ba Konaré",
-        image="http://localhost:8000/static/adame-konare.jpg",
+        image="adame-konare.jpg",
         country="mali",
-        flag="http://localhost:8000/static/flags/mali.png",
+        flag="flags/mali.png",
         category="Historian, Feminist, First Lady, Educator",
         summary="Malian historian, first lady, feminist author and founder of a women’s museum.",
         details={
@@ -1082,9 +1082,9 @@ biographies = [
 
     Biography(
         name="Julienne Lusenge",
-        image="http://localhost:8000/static/julienne-lusenge.webp",
+        image="julienne-lusenge.webp",
         country="drc",
-        flag="http://localhost:8000/static/flags/drc.png",
+        flag="flags/drc.png",
         category="Activist,Humanitarian,Feminist",
         summary="DRC human rights defender who founded SOFEPADI and advocates survivors of wartime sexual violence.",
         details={
@@ -1126,9 +1126,9 @@ biographies = [
 
     Biography(
         name="Fatou Bensouda",
-        image="http://localhost:8000/static/fatou-bensouda.jpg",
+        image="fatou-bensouda.jpg",
         country="gambia",
-        flag="http://localhost:8000/static/flags/gambia.png",
+        flag="flags/gambia.png",
         category="Lawyer,Jurist,Political",
         summary="Gambian prosecutor and former Chief Prosecutor of the International Criminal Court.",
         details={
@@ -1217,26 +1217,26 @@ print("Done inserting biographies.")
 # biographies = [
 #     Biography(
 #         name="Chimamanda Ngozi Adichie",
-#         image="http://localhost:8000/static/adiche.jpg",
+#         image="adiche.jpg",
 #         country="nigeria",
-#         flag="http://localhost:8000/static/flags/nigeria.png",
+#         flag="flags/nigeria.png",
 #         category="Feminist",
 #         summary="Award-winning Nigerian writer and feminist icon.",
 #         details="Chimamanda Ngozi Adichie is a Nigerian writer whose work has been translated into over thirty languages. She is known for her novels like 'Half of a Yellow Sun' and 'Americanah'."
 #     ),
 #     Biography(
 #         name="Funmilayo Ransome-Kuti",
-#         image="http://localhost:8000/static/funmi-kuti.jpeg",
+#         image="funmi-kuti.jpeg",
 #         country="nigeria",
-#         flag= "http://localhost:8000/static/flags/nigeria.png",
+#         flag= "flags/nigeria.png",
 #          category="Activist",
 #         summary="Trailblazing Nigerian women's rights Activist.",
 #         details="Funmilayo Ransome-Kuti was a teacher, political campaigner, and mother of Afrobeat legend Fela Kuti."
 #     ),
 #     Biography(
 #         name="Wangari Maathai",
-#         image="http://localhost:8000/static/wangari.jpeg",
-#         flag="http://localhost:8000/static/flags/kenya.png",
+#         image="wangari.jpeg",
+#         flag="flags/kenya.png",
 #          category="Activist",
 #         country="kenya",
 #         summary="Kenyan environmentalist and Nobel Peace Prize winner.",
@@ -1244,9 +1244,9 @@ print("Done inserting biographies.")
 #     ),
 #     Biography(
 #         name="Ellen Johnson Sirleaf",
-#         image="http://localhost:8000/static/ellen.jpg",
+#         image="ellen.jpg",
 #         country="liberia",
-#         flag="http://localhost:8000/static/flags/liberia.png",
+#         flag="flags/liberia.png",
 #         category="Activist",
 #         summary="Africa’s first elected female president.",
 #         details="Led Liberia and won the Nobel Peace Prize for promoting peace and women's rights."
