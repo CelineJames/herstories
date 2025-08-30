@@ -93,12 +93,9 @@ export default function BiographyList() {
                 {/* new */}
                 <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
                   <Image
-                    src={`https://herstories-backend.onrender.com/static/flags/${bio.country}.png`}
-                    // src={
-                    //   bio.image.startsWith("http")
-                    //     ? bio.image
-                    //     : `${process.env.NEXT_PUBLIC_API_URL}/${bio.image}`
-
+                    // src={`https://herstories-backend.onrender.com/static/flags/${bio.country}.png`}
+                    // src={`${bio.image}`}
+                    src={`https://herstories-backend.onrender.com/static/${bio.image}`}
                     alt={bio.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
