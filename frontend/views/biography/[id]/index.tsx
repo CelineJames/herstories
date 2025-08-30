@@ -64,11 +64,7 @@ export default function BiographyDetail({ id }: { id: string }) {
     <div className="max-w-[100%] md:max-w-[80%] mx-auto p-2 md:p-10 mt-20 space-y-10">
       <div className="relative w-full h-[400px] md:h-[80vh] mb-6 rounded-lg overflow-hidden">
         <Image
-          src={
-            bio.image.startsWith("http")
-              ? bio.image
-              : `https://herstories-backend.onrender.com/${bio.image}`
-          }
+          src={`https://herstories-backend.onrender.com/static/${bio.image}`}
           alt={`Picture of ${bio.name}`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
