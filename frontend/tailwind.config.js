@@ -2,8 +2,8 @@
 
 module.exports = {
   content: [
-    "./App/**/*.{js,ts,jsx,tsx}", // App Router files
-    "./Views/**/*.{js,ts,jsx,tsx}", // Your logic/components
+    "./app/**/*.{js,ts,jsx,tsx}", // App Router files
+    "./views/**/*.{js,ts,jsx,tsx}", // Your logic/components
     "./components/**/*.{js,ts,jsx,tsx}", // Future component folder
   ],
   theme: {
