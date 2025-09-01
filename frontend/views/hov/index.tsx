@@ -184,7 +184,7 @@ function BrickWallScene() {
       {/* column 4 */}
       <Frame
         position={[-1.3, 2.5, -14.9]}
-        imageUrl="/assets/sirLeaf.jpg"
+        imageUrl="/assets/sirleaf.jpg"
         Iname="Ellen Sirleaf"
         country="Liberia"
       />
@@ -236,7 +236,7 @@ function BrickWallScene() {
       {/* column 8 */}
       <Frame
         position={[9, 2.5, -14.9]}
-        imageUrl="/assets/joyce-Banda.jpg"
+        imageUrl="/assets/joyce-banda.jpg"
         Iname="Nawal Sadawi"
         country="Egypt"
       />
