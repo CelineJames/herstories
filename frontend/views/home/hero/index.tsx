@@ -22,7 +22,7 @@ const heroData: heroItems[] = [
     name: "Alaa Salah",
   },
   {
-    image: "/assets/Amel-Kabourl.jpg",
+    image: "/assets/amel-kabourl.jpg",
     quote:
       "We dont need super heroes, we need real people doing meanifull work.",
     name: "Amel Kabourl",
@@ -39,7 +39,7 @@ const heroData: heroItems[] = [
     name: "Funmilayo Ransome Kuti",
   },
   {
-    image: "/assets/Aoua-keita.jpeg",
+    image: "/assets/aoua-keita.jpeg",
     quote:
       "I wanted to show that a woman too could be a fighter and a builder.",
     name: "Aoua Keita",
@@ -55,7 +55,7 @@ const heroData: heroItems[] = [
     name: "Tsitsi Dangaremba",
   },
   {
-    image: "/assets/Nawal-sadami.jpeg",
+    image: "/assets/nawal-sadami.jpeg",
     quote:
       "They said 'You are a savage and dangerous woman' i am speaking the truth and the truth is savge and dangerous.",
     name: "Tsitsi Dangaremba",
