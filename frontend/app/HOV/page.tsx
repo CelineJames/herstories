@@ -1,4 +1,4 @@
-import HallOfVoices from "@/views/Hov";
+import HallOfVoices from "@/views/hov";
 
 export default function Page(): React.ReactElement {
   return <HallOfVoices />;
