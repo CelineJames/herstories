@@ -142,6 +142,7 @@ function BrickWallScene() {
         Iname="Miriam Makemba"
         country="South-Africa"
       />
+      
       {/* column 2 */}
       <Frame
         position={[-6.4, 2.5, -14.9]}
