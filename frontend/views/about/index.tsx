@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "@/components/button";
+import Container from "@/components/container";
 
 // const team = [
 //   {
@@ -26,14 +27,14 @@ import Button from "@/components/button";
 
 export default function AboutUs(): React.ReactElement {
   return (
-    <main className="min-h-screen mt-24 bg-white">
-      <div className="w-full bg-primary md:max-w-[80vw] mx-auto relative aspect-[4/4] md:aspect-[5/2] overflow-hidden md:rounded-xl max-h-[400px]">
+    <Container className="min-h-screen mt-24 bg-white">
+      <div className="w-full bg-primary mx-auto relative aspect-[4/4] md:aspect-[5/2] overflow-hidden md:rounded-xl max-h-[400px]">
         {/* Background Image */}
         <Image
           src="/logo-white.png"
           alt="HerStories Logo"
           fill
-          className="object-cover"
+          className="object-cover max-w-[1200px] mx-auto"
         />
 
         {/* Text Overlay at Bottom */}
@@ -44,7 +45,7 @@ export default function AboutUs(): React.ReactElement {
         </div>
       </div>
       {/* who are we */}
-      <div className="px-6 w-full md:w-[50%] mx-auto font-poppins mt-6">
+      <div className="px-6 w-full md:w-[60%] mx-auto font-poppins mt-6">
         <Button className="mt-6">Our Mission</Button>
         <h1 className="font-alnevrada text-3xl font-semibold mb-4">
           Who are we?
@@ -69,9 +70,9 @@ export default function AboutUs(): React.ReactElement {
         </p>
       </div>
       {/* what are we after */}
-      <div className="flex flex-col md:flex-row-reverse md:justify-center items-start md:items-center gap-10 mt-24 px-6 md:w-[90%] mx-auto">
+      <div className="flex flex-col md:flex-row-reverse md:justify-center items-start md:items-center gap-10 mt-24 px-6 mx-auto">
         {/* Image Section */}
-        <div className="w-full md:w-[40%] max-w-[400px] aspect-[1/1] rounded-xl overflow-hidden relative">
+        <div className="w-full md:w-[40%] lg:max-w-[450px] aspect-[1/1] rounded-xl overflow-hidden relative">
           <Image
             src="/assets/aboutus-2.jpg"
             alt=""
@@ -116,8 +117,8 @@ export default function AboutUs(): React.ReactElement {
       </div>
 
       {/* why herstories */}
-      <div className="flex flex-col md:flex-row md:justify-center items-start md:items-center gap-10 mt-24 px-6 md:w-[90%] mx-auto">
-        <div className="relative w-full md:w-[40%] max-w-[400px] h-[500px] rounded-xl overflow-hidden">
+      <div className="flex flex-col md:flex-row md:justify-center items-start md:items-center gap-10 mt-24 px-6 mx-auto">
+        <div className="relative w-full md:w-[40%] lg:max-w-[450px] h-[500px] rounded-xl overflow-hidden">
           <Image
             src="/assets/aboutus-1.webp"
             alt="Ngozi Okonjo-Iweala"
@@ -170,9 +171,9 @@ export default function AboutUs(): React.ReactElement {
       </div>
 
       {/* How we work */}
-      <div className="flex flex-col md:flex-row-reverse md:justify-center items-start md:items-center gap-10 mt-24 px-6 md:w-[90%] mx-auto">
+      <div className="flex flex-col md:flex-row-reverse md:justify-center items-start md:items-center gap-10 mt-24 px-6  mx-auto">
         {/* Image Section */}
-        <div className="w-full md:w-[40%] max-w-[400px] aspect-[1/1] rounded-xl overflow-hidden relative">
+        <div className="w-full md:w-[40%] lg:max-w-[450px] aspect-[1/1] rounded-xl overflow-hidden relative">
           <Image
             src="/assets/community-work.jpg"
             alt=""
@@ -278,6 +279,6 @@ export default function AboutUs(): React.ReactElement {
           ))}
         </div>
       </div> */}
-    </main>
+    </Container>
   );
 }

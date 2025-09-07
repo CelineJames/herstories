@@ -9,37 +9,26 @@ const featuredBiography: featuredBiog[] = [
     image: "/assets/ngozi-iweala.jpg",
     name: "Ngozi Okonjo-Iweala",
     details:
-      "Ngozi Okonjo‑Iweala stands as a trailblazer—breaking multiple glass ceilings, reforming institutions, and embodying transformative leadership at national and global levels. From shepherding Nigeria through fiscal crises to steering the WTO through pandemic era challenges, she demonstrates resilience, intellect, and a deep-rooted commitment to Africa’s future.",
+      "A Nigerian economist and international development expert, Ngozi Okonjo-Iweala has broken multiple glass ceilings—she was the first woman and first African to serve as Director-General of the World Trade Organization, and previously twice served as Nigeria’s Finance Minister, leading crucial economic reforms and securing debt relief during fiscal crises.",
   },
   {
     image: "/assets/ala-salah2.jpg",
     name: "Alaa Salah",
     details:
-      "Ngozi Okonjo‑Iweala stands as a trailblazer—breaking multiple glass ceilings, reforming institutions, and embodying transformative leadership at national and global levels. From shepherding Nigeria through fiscal crises to steering the WTO through pandemic era challenges, she demonstrates resilience, intellect, and a deep-rooted commitment to Africa’s future.",
+      "Known internationally as the “Woman in White,” Alaa Salah became a symbol of Sudan’s 2019 revolution when a viral photograph captured her leading chants atop a car. A 22-year-old architecture student at the time, Salah later spoke at the UN Security Council calling for gender equality in Sudan’s transition, and received the Hillary Rodham Clinton Award in 2023 for her activism.",
   },
   {
-    image: "/assets/Amel-Kabourl.jpg",
-    name: "Amel Kabourl",
+    image: "/assets/amel-kabourl.jpg",
+    name: "Amel Karboul",
     details:
-      "Ngozi Okonjo‑Iweala stands as a trailblazer—breaking multiple glass ceilings, reforming institutions, and embodying transformative leadership at national and global levels. From shepherding Nigeria through fiscal crises to steering the WTO through pandemic era challenges, she demonstrates resilience, intellect, and a deep-rooted commitment to Africa’s future.",
+      "Tunisian author, speaker, and politician, Amel Karboul was the first woman to serve as Tunisia’s Minister of Tourism (2014–2015) and later led the Education Outcomes Fund, a UNICEF-hosted initiative to improve education for millions globally. She is also the author of ‘Coffin Corner’ and has held leadership roles at Mercedes-Benz, BCG, and global education initiatives.",
   },
+
   {
-    image: "/assets/ngozi-iweala.jpg",
-    name: "Ngozi Okonjo-Iweala",
+    image: "/assets/aoua-keita.jpeg",
+    name: "Aoua Keïta",
     details:
-      "Ngozi Okonjo‑Iweala stands as a trailblazer—breaking multiple glass ceilings, reforming institutions, and embodying transformative leadership at national and global levels. From shepherding Nigeria through fiscal crises to steering the WTO through pandemic era challenges, she demonstrates resilience, intellect, and a deep-rooted commitment to Africa’s future.",
-  },
-  {
-    image: "/assets/Aoua-keita.jpeg",
-    name: "Aoua Keita",
-    details:
-      "Ngozi Okonjo‑Iweala stands as a trailblazer—breaking multiple glass ceilings, reforming institutions, and embodying transformative leadership at national and global levels. From shepherding Nigeria through fiscal crises to steering the WTO through pandemic era challenges, she demonstrates resilience, intellect, and a deep-rooted commitment to Africa’s future.",
-  },
-  {
-    image: "/assets/ngozi-iweala.jpg",
-    name: "Ngozi Okonjo-Iweala",
-    details:
-      "Ngozi Okonjo‑Iweala stands as a trailblazer—breaking multiple glass ceilings, reforming institutions, and embodying transformative leadership at national and global levels. From shepherding Nigeria through fiscal crises to steering the WTO through pandemic era challenges, she demonstrates resilience, intellect, and a deep-rooted commitment to Africa’s future.",
+      "A pioneering Malian independence figure born in 1912, Aoua Keïta was a midwife, author, and political activist who co-founded the Sudanese Union – African Democratic Rally, served in Mali’s first government, and wrote her memoir, *Femme d’Afrique*, sharing a rare female perspective on decolonization. :contentReference[oaicite:2]{index=2} (added context based on historical records)",
   },
 ];
 

@@ -5,6 +5,7 @@ import { fetchBiographies, fetchCategories } from "@/utils/api";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import Container from "@/components/container";
 
 interface Biography {
   id: number;
@@ -46,7 +47,7 @@ export default function BiographyList() {
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <div className="p-6 max-w-7xl mx-auto mt-20">
+    <Container className="p-6 mt-20">
       <h1 className="font-alnevrada font-bold text-4xl text-center mb-8">
         Biographies
       </h1>
@@ -171,6 +172,6 @@ export default function BiographyList() {
           </button>
         </div>
       )}
-    </div>
+    </Container>
   );
 }
