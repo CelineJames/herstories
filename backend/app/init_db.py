@@ -151,10 +151,10 @@ biographies = [
     ),
     Biography(
     name="Gaositwe Chiepe",
-    image="chiepe.jpg",
+    image="chiepe.jpeg",
     country="botswana",
     flag="flags/botswana.png",
-    category="Diplomat & Educator",
+    category="Diplomat, Educator",
     summary="Trailblazing diplomat and Botswana’s first female cabinet minister.",
     details={
         "basic_info": {
@@ -202,6 +202,58 @@ biographies = [
         )
     }
     ),
+    Biography(
+    name="Zaha Hadid",
+    image="zaha_hadid.webp",
+    country="iraq",
+    flag="flags/iraq.png",
+    category="Architect",
+    summary="Trailblazing Iraqi-British architect, first woman to receive the Pritzker Architecture Prize, known for futuristic and curvilinear designs.",
+    details={
+        "basic_info": {
+            "full_name": "Zaha Mohammad Hadid",
+            "birth": "October 31, 1950 in Baghdad, Iraq",
+            "nationality": "Iraqi-British",
+            "physical_appearance": "Elegant and expressive, often in bold fashion reflecting her artistic vision.",
+            "status": "Deceased (March 31, 2016, Miami, USA)"
+        },
+        "education": [
+            { "institution": "American University of Beirut", "degree": "Mathematics", "year": "1968–1971" },
+            { "institution": "Architectural Association School of Architecture, London", "degree": "Diploma in Architecture", "year": "1977" }
+        ],
+        "career_highlights": [
+            "Joined the Office for Metropolitan Architecture (OMA) and worked with Rem Koolhaas before founding Zaha Hadid Architects in 1980",
+            "Gained recognition for bold, unconventional designs that challenged architectural norms",
+            "Major works include the Vitra Fire Station (Germany), MAXXI Museum (Rome), Guangzhou Opera House (China), and London Aquatics Centre (2012 Olympics)"
+        ],
+        "author_and_advocate": [
+            "Published ‘Zaha Hadid: Complete Works’ showcasing her visionary projects",
+            "Advocated for more inclusion of women in architecture and design fields"
+        ],
+        "honors": [
+            "Pritzker Architecture Prize (2004) – first woman recipient",
+            "RIBA Gold Medal (2016) – first woman to receive it individually",
+            "Dame Commander of the Order of the British Empire (2002)",
+            "Listed among TIME magazine’s 100 most influential people (2010)"
+        ],
+        "personal_life": [
+            "Never married, no children; dedicated her life to architecture",
+            "Known for her strong personality, uncompromising vision, and passion for futuristic design"
+        ],
+        "impact_and_influence": [
+            "Redefined 21st-century architecture with fluid, dynamic, and experimental forms",
+            "Broke barriers for women in architecture, inspiring new generations worldwide",
+            "Her firm, Zaha Hadid Architects, continues her legacy globally"
+        ],
+        "full_summary": (
+            "Zaha Hadid was a visionary architect whose radical approach reshaped contemporary architecture. "
+            "Born in Baghdad and educated in London, she challenged structural conventions with designs that fused mathematics, art, and engineering. "
+            "Her groundbreaking career included being the first woman to win the Pritzker Architecture Prize and receiving global honors for her innovation. "
+            "Though she passed away in 2016, her firm continues to influence urban landscapes across the world, ensuring her legacy as one of the most important architects of modern times."
+        )
+    }
+),
+
     Biography(
     name="Unity Dow",
     image="unity-dow.jpg",
@@ -709,7 +761,7 @@ biographies = [
         image="ilwad-elman.jpg",
         country="somalia",
         flag="flags/somalia.png",
-        category="Human Rights",
+        category="Human Rights Activist",
         summary="Somali‑Canadian peacebuilder and humanitarian activist.",
         details={
             "basic_info": {
