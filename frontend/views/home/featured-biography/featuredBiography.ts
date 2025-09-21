@@ -28,7 +28,7 @@ const featuredBiography: featuredBiog[] = [
     image: "/assets/aoua-keita.jpeg",
     name: "Aoua Keïta",
     details:
-      "A pioneering Malian independence figure born in 1912, Aoua Keïta was a midwife, author, and political activist who co-founded the Sudanese Union – African Democratic Rally, served in Mali’s first government, and wrote her memoir, *Femme d’Afrique*, sharing a rare female perspective on decolonization. :contentReference[oaicite:2]{index=2} (added context based on historical records)",
+      "A pioneering Malian independence figure born in 1912, Aoua Keïta was a midwife, author, and political activist who co-founded the Sudanese Union – African Democratic Rally, served in Mali’s first government, and wrote her memoir, *Femme d’Afrique*, sharing a rare female perspective on decolonization.",
   },
 ];
 

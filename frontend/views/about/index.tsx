@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Button from "@/components/button";
 import Container from "@/components/container";
+// import { Link } from "lucide-react";
+import Link from "next/link";
 
 // const team = [
 //   {
@@ -233,12 +235,16 @@ export default function AboutUs(): React.ReactElement {
           </p>
         </div>
         <div className="font-poppins text-sm flex flex-col md:flex-row md:justify-end md:items-center md:w-[40%] gap-4">
-          <button className="bg-primary rounded-md w-full py-2 md:max-w-44 md:px-4 transition-all duration-300 hover:-translate-y-1">
-            Submit a Story
-          </button>
-          <button className="border border-ashwhite rounded-md w-full md:max-w-44 py-2 md:px-4 hover:bg-ashwhite transition-all duration-300 hover:text-primary hover:-translate-y-1">
-            Get Involved
-          </button>
+          <Link href="/submit-story">
+            <button className="bg-primary rounded-md w-full py-2 md:max-w-44 md:px-4 transition-all duration-300 hover:-translate-y-1">
+              Submit a Story
+            </button>
+          </Link>
+          <Link href="/get-involved">
+            <button className="border border-ashwhite rounded-md w-full md:max-w-44 py-2 md:px-4 hover:bg-ashwhite transition-all duration-300 hover:text-primary hover:-translate-y-1">
+              Get Involved
+            </button>
+          </Link>
         </div>
       </div>
 

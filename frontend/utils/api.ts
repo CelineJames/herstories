@@ -1,5 +1,9 @@
 // const isDev = process.env.NODE_ENV === "development";
-export const BASE_URL = "https://herstories-backend.onrender.com";
+const isDev = process.env.NODE_ENV === "development";
+export const BASE_URL = isDev
+  ? "http://127.0.0.1:8000"
+  : "https://herstories-backend.onrender.com";
+// export const BASE_URL = "https://herstories-backend.onrender.com";
 
 export async function fetchBiographies(
   page: number,

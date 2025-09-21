@@ -12,8 +12,11 @@ export default function GetInvolved(): React.ReactElement {
 
         <div className="flex items-center justify-center mt-8">
           <a href="mailto:">
-            <button className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition">
-              Become a Volunteer
+            <button className="relative border border-primary px-6 py-3 text-primary rounded-lg cursor-pointer font-semibold overflow-hidden z-10 transition-colors group">
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                Become a Volunteer
+              </span>
+              <span className="absolute top-0 right-0 h-full w-0 bg-primary transition-all duration-500 ease-in-out group-hover:w-full group-hover:left-0 z-[-1]"></span>
             </button>
           </a>
         </div>

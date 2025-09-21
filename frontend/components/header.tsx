@@ -13,13 +13,13 @@ export default function Header() {
 
   return (
     <header className="w-full h-20 bg-white shadow-md fixed top-0 z-50">
-      <div className="lg:max-w-[1800px] mx-auto px-2 py-3 flex items-center justify-between">
+      <div className="xl:w-[80%] lg:max-w-[1800px] mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
 
         <Image src={logo} alt="" className="w-36 h-12 object-cover" />
 
         {/* Desktop Links */}
-        <nav className="hidden md:flex space-x-6 items-center font-bold">
+        <nav className="hidden md2:flex space-x-6 items-center font-bold">
           <Link
             href="/#"
             onClick={() => setMenuOpen(false)}
@@ -59,7 +59,7 @@ export default function Header() {
         </nav>
 
         {/* Desktop Buttons */}
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md2:flex space-x-4">
           <Link href="/submit-story">
             <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primarydeep hover:text-white transition">
               Submit a Story
@@ -73,7 +73,7 @@ export default function Header() {
         </div>
 
         {/* Hamburger Menu (Mobile) */}
-        <div className="md:hidden">
+        <div className="md2:hidden">
           <button onClick={toggleMenu}>
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>

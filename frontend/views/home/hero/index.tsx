@@ -22,6 +22,12 @@ const heroData: heroItems[] = [
     name: "Alaa Salah",
   },
   {
+    image: "/assets/zaha.jpeg",
+    quote:
+      "Women are always told, 'You're not going to make it, it’s too difficult, you can't do that, don't enter this competition, you'll never win it,' - they need confidence in themselves and people around them to help them to get on.",
+    name: "Zaha Hadid",
+  },
+  {
     image: "/assets/amel-kabourl.jpg",
     quote:
       "We dont need super heroes, we need real people doing meanifull work.",
