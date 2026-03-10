@@ -142,7 +142,7 @@ function BrickWallScene() {
         Iname="Miriam Makemba"
         country="South-Africa"
       />
-      
+
       {/* column 2 */}
       <Frame
         position={[-6.4, 2.5, -14.9]}
@@ -258,7 +258,21 @@ export default function HallOfVoices() {
   return (
     <div className="w-full h-screen">
       <Canvas camera={{ position: [0, 1.5, 6], fov: 60 }}>
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <Html center>
+              <div
+                style={{
+                  color: "purple",
+                  fontSize: "3rem",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                Loading...
+              </div>
+            </Html>
+          }
+        >
           <OrbitControls
             enablePan={false}
             minDistance={0.01}

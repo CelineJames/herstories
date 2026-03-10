@@ -24,7 +24,7 @@ const heroData: heroItems[] = [
   {
     image: "/assets/zaha.jpeg",
     quote:
-      "Women are always told, 'You're not going to make it, it’s too difficult, you can't do that, don't enter this competition, you'll never win it,' - they need confidence in themselves and people around them to help them to get on.",
+      "Women are always told, 'You're not going to make it, it's too difficult, you can't do that, don't enter this competition, you'll never win it,' - they need confidence in themselves and people around them to help them to get on.",
     name: "Zaha Hadid",
   },
   {
@@ -63,17 +63,34 @@ const heroData: heroItems[] = [
   {
     image: "/assets/nawal-sadami.jpeg",
     quote:
-      "They said 'You are a savage and dangerous woman' i am speaking the truth and the truth is savge and dangerous.",
-    name: "Tsitsi Dangaremba",
+      "They said 'You are a savage and dangerous woman' i am speaking the truth and the truth is savage and dangerous.",
+    name: "Nawal El Saadawi",
   },
-  // Add more as needed
 ];
 
 export default function Hero(): React.ReactElement {
   const [current, setCurrent] = useState<number>(0);
   const [fade, setFade] = useState<boolean>(true);
+  const [imagesReady, setImagesReady] = useState<boolean>(false);
 
+  // Preload all images EXCEPT the first one
   useEffect(() => {
+    const promises = heroData.slice(1).map((item) => {
+      return new Promise((resolve) => {
+        const img = new window.Image();
+        img.src = item.image;
+        img.onload = resolve;
+        img.onerror = resolve; // don't block if one fails
+      });
+    });
+
+    Promise.all(promises).then(() => setImagesReady(true));
+  }, []);
+
+  // Only start slideshow once all images are preloaded
+  useEffect(() => {
+    if (!imagesReady) return;
+
     const fadeTimeout = setTimeout(() => setFade(false), 500);
 
     const interval = setInterval(() => {
@@ -88,13 +105,13 @@ export default function Hero(): React.ReactElement {
       clearInterval(interval);
       clearTimeout(fadeTimeout);
     };
-  }, []);
+  }, [imagesReady]);
 
   const { image, quote, name } = heroData[current];
 
   return (
     <div className="relative w-full h-[90vh] overflow-hidden mt-16">
-      {/* Background Image */}
+      {/* Background Image — first image shows immediately*/}
       <Image
         src={image}
         alt={name}
@@ -113,7 +130,7 @@ export default function Hero(): React.ReactElement {
           }`}
         >
           <p className="text-xl md:text-3xl font-semibold italic mb-4">
-            “{quote}”
+            &ldquo;{quote}&rdquo;
           </p>
           <p className="text-sm md:text-lg font-medium">— {name}</p>
         </div>

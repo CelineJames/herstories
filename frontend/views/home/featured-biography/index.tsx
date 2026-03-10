@@ -32,7 +32,7 @@ export default function FeaturedBio(): React.ReactElement {
         <p className="font-poppins text-navyblue font-light">{bio.details}</p>
 
         <Link
-          href="/biography"
+          href={`/biography/${bio.id}`} 
           className="inline-flex items-center gap-1 text-secondary border-b border-secondary pb-[1px] group transition mt-8"
         >
           Read Biography
