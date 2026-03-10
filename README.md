@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HerStories Africa
+
+> _A 3D digital archive preserving the biographies, legacies, of told and untold histories of African women._
+
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=flat-square&logo=typescript)
+![Python](https://img.shields.io/badge/Python-FastAPI-green?style=flat-square&logo=python)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38bdf8?style=flat-square&logo=tailwindcss)
+![Frontend on Vercel](https://img.shields.io/badge/Frontend-Vercel-black?style=flat-square&logo=vercel)
+![Backend on Render](https://img.shields.io/badge/Backend-Render-46E3B7?style=flat-square&logo=render)
+
+---
+
+## What is HerStories?
+
+HerStories is a platform built at the intersection of technology and African women's history. It exists because these stories deserve to be told, and technology is the most powerful tool we have to tell them.
+
+The platform features:
+
+- **3D Wall of Fame** — an interactive, immersive library of African women's biographies rendered in 3D
+- **Biography Archive** — detailed profiles celebrating the lives, legacies, and contributions of African women across history
+- **Women's Studies Archive** — a curated collection of research materials, papers, and resources for women's studies (in progress)
+
+---
+
+## Tech Stack
+
+| Layer            | Technology                    |
+| ---------------- | ----------------------------- |
+| Frontend         | Next.js 16, React, TypeScript |
+| Styling          | Tailwind CSS                  |
+| 3D Rendering     | React Three Fiber / Three.js  |
+| Backend          | Python, FastAPI               |
+| Frontend Hosting | Vercel                        |
+| Backend Hosting  | Render                        |
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- Python 3.10+
+- npm or yarn
+
+### Frontend Setup
 
 ```bash
+# Clone the repository
+git clone https://github.com/CelineJames/herstories.git
+
+# Navigate to the frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Navigate to the backend directory
+cd backend
 
-## Learn More
+# Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-To learn more about Next.js, take a look at the following resources:
+# Install dependencies
+pip install -r requirements.txt
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Run the FastAPI server
+uvicorn app.main:app --reload
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Backend runs on [http://localhost:8000](http://localhost:8000)
 
-## Deploy on Vercel
+API docs available at [http://localhost:8000/docs](http://localhost:8000/docs)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Variables
+
+Create a `.env.local` file in the `frontend/` directory:
+
+```env
+NEXT_PUBLIC_API_URL=your_render_backend_url_here
+```
+
+> The backend is hosted on Render. Once deployed, copy your Render service URL and paste it as the value above. This connects your frontend to the live API.
+
+---
+
+## Contributing
+
+This project uses a protected main branch. All contributions must go through a pull request.
+
+```bash
+# Create a new branch
+git checkout -b feature/your-feature-name
+
+# Make your changes, then push
+git push origin feature/your-feature-name
+
+# Open a Pull Request on GitHub
+```
+
+---
+
+## About the Developer
+
+Built by **Itoro Uwem James** — Frontend Developer, AI-augmented builder, and advocate for African women's stories in tech and history.
+
+- 🌐 [Portfolio](https://itoro-james.vercel.app)
+- 💼 [LinkedIn](https://www.linkedin.com/in/itoro-celine-james)
+- 🐙 [GitHub](https://github.com/CelineJames)
+
+---
+
+_HerStories Africa — Documenting Her, Defining Us...._
