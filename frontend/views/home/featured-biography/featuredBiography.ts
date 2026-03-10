@@ -7,7 +7,7 @@ export type featuredBiog = {
 
 const featuredBiography: featuredBiog[] = [
   {
-    id: 2,
+    id: 8,
     image: "/assets/ngozi-iweala.jpg",
     name: "Ngozi Okonjo-Iweala",
     details:
