@@ -1,4 +1,3 @@
-
 export default function Loading() {
   return (
     <div className="p-6 mt-20 max-w-7xl mx-auto">
@@ -13,10 +12,10 @@ export default function Loading() {
       </div>
 
       {/* Cards skeleton */}
+      <h1 className="font-alnevrada font-bold text-4xl text-center mb-8 text-gray-300 animate-pulse">
+        Loading Biographies...
+      </h1>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <h1 className="font-alnevrada font-bold text-4xl text-center mb-8 text-gray-300 animate-pulse">
-          Loading Biographies...
-        </h1>
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="bg-white rounded shadow p-4">
             <div className="w-full h-80 bg-gray-200 rounded-lg mb-4 animate-pulse" />
