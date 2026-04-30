@@ -29,7 +29,7 @@ import Link from "next/link";
 
 export default function AboutUs(): React.ReactElement {
   return (
-    <Container className="min-h-screen mt-24 bg-white">
+    <Container className="min-h-screen bg-white">
       <div className="w-full bg-primary mx-auto relative aspect-[4/4] md:aspect-[5/2] overflow-hidden md:rounded-xl max-h-[400px]">
         {/* Background Image */}
         <Image

@@ -50,7 +50,14 @@ export default function Header() {
             Biography
           </Link>
           <Link
-            href="/hov"
+            href="/blog"
+            onClick={() => setMenuOpen(false)}
+            className="text-gray-700 hover:text-primary"
+          >
+            Blog
+          </Link>
+          <Link
+            href="/hall-of-fame"
             onClick={() => setMenuOpen(false)}
             className="text-gray-700 hover:text-primary"
           >
@@ -120,7 +127,7 @@ export default function Header() {
               Blog
             </Link>
             <Link
-              href="/hov"
+              href="/hall-of-fame"
               onClick={() => setMenuOpen(false)}
               className="text-gray-700 hover:text-primary"
             >

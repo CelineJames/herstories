@@ -110,7 +110,7 @@ export default function Hero(): React.ReactElement {
   const { image, quote, name } = heroData[current];
 
   return (
-    <div className="relative w-full h-[90vh] overflow-hidden mt-16">
+    <div className="relative w-full h-[90vh] overflow-hidden">
       {/* Background Image — first image shows immediately*/}
       <Image
         src={image}
