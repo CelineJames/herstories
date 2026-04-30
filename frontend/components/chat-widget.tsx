@@ -555,7 +555,7 @@ export default function ChatWidget() {
                 onKeyDown={handleKeyDown}
                 placeholder="Ask Ife anything..."
                 disabled={loading}
-                className="flex-1 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm font-poppins focus:outline-none focus:border-primary disabled:opacity-50"
+                className="flex-1 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-base font-poppins focus:outline-none focus:border-primary disabled:opacity-50"
               />
               <button
                 onClick={sendMessage}
