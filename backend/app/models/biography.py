@@ -1,8 +1,5 @@
-
-from sqlalchemy import Column, Integer, String, Text, JSON
-
-from app.database import Base  # ✅ This line is critical!
-
+from sqlalchemy import Column, Integer, String, JSON
+from app.database import Base
 
 
 class Biography(Base):
@@ -10,11 +7,10 @@ class Biography(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
+    slug = Column(String, unique=True, index=True, nullable=True)
     image = Column(String)
     summary = Column(String)
     country = Column(String, index=True)
     flag = Column(String, nullable=True)
-    category = Column(String, index=True) 
+    category = Column(String, index=True)
     details = Column(JSON)
-
-
