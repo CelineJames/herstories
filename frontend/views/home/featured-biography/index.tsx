@@ -29,10 +29,10 @@ export default function FeaturedBio(): React.ReactElement {
         <h1 className="font-alnevrada text-3xl font-semibold mb-2">
           {bio.name}
         </h1>
-        <p className="font-poppins text-navyblue font-light">{bio.details}</p>
+        <p className="font-lufga text-navyblue font-light">{bio.details}</p>
 
         <Link
-          href={`/biography/${bio.id}`} 
+          href={`/biography/${bio.id}`}
           className="inline-flex items-center gap-1 text-secondary border-b border-secondary pb-[1px] group transition mt-8"
         >
           Read Biography

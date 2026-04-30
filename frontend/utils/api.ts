@@ -1,15 +1,10 @@
-// const isDev = process.env.NODE_ENV === "development";
-const isDev = process.env.NODE_ENV === "development";
-export const BASE_URL = isDev
-  ? "http://127.0.0.1:8000"
-  : "https://herstories-backend.onrender.com";
-// export const BASE_URL = "https://herstories-backend.onrender.com";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
 export async function fetchBiographies(
   page: number,
   limit: number,
   search: string,
-  category: string
+  category: string,
 ) {
   const skip = (page - 1) * limit;
   const params = new URLSearchParams({
@@ -26,17 +21,7 @@ export async function fetchBiographies(
 }
 
 export async function fetchCategories() {
-  const res = await fetch(`${BASE_URL}/category`);
+  const res = await fetch(`${BASE_URL}/biographies/categories`);
   if (!res.ok) throw new Error("Failed to fetch categories");
   return res.json();
 }
-
-// const BASE_URL = "";
-
-// export async function fetchBiographies(page = 1, pageSize = 12) {
-//   const res = await fetch(
-//     `${BASE_URL}/biography/?page=${page}&page_size=${pageSize}`
-//   );
-//   if (!res.ok) throw new Error("Failed to fetch biographies");
-//   return res.json();
-// }
