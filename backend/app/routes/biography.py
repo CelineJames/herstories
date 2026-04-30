@@ -1,37 +1,23 @@
-from fastapi import APIRouter, Depends, Query, Request
+from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy.orm import Session
-from app import models, schemas, database
-from typing import List
-from fastapi import HTTPException
+from app.models import Biography
+from app.schemas import BiographyOut, BiographyCreate, BiographyListResponse
+from app.dependencies import get_db
 
-router = APIRouter()
+router = APIRouter(prefix="/biographies", tags=["biographies"])
 
-def get_db():
-    db = database.SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
-@router.post("/biographies/", response_model=schemas.BiographyOut)
-def create_biography(bio: schemas.BiographyCreate, db: Session = Depends(get_db)):
-    db_bio = models.Biography(**bio.dict())
+@router.post("/", response_model=BiographyOut)
+def create_biography(bio: BiographyCreate, db: Session = Depends(get_db)):
+    db_bio = Biography(**bio.dict())
     db.add(db_bio)
     db.commit()
     db.refresh(db_bio)
     return db_bio
 
-@router.get("/biographies/{id}", response_model=schemas.BiographyOut)
-def get_biography(id: int, db: Session = Depends(get_db)):
-    bio = db.query(models.Biography).filter(models.Biography.id == id).first()
-    if not bio:
-        raise HTTPException(status_code=404, detail="Biography not found")
-    return bio
 
-# ✅ UPDATED
-@router.get("/biographies/")
+@router.get("/", response_model=BiographyListResponse)
 def read_biographies(
-    request: Request,  # ✅ Added to get base_url
     skip: int = 0,
     limit: int = Query(default=10, le=50),
     search: str = Query(default=None),
@@ -39,71 +25,54 @@ def read_biographies(
     category: str = Query(default=None),
     db: Session = Depends(get_db)
 ):
-    query = db.query(models.Biography)
+    query = db.query(Biography)
 
     if search:
         search_term = f"%{search}%"
         query = query.filter(
-            models.Biography.name.ilike(search_term) |
-            models.Biography.summary.ilike(search_term) |
-            models.Biography.details.ilike(search_term)
+            Biography.name.ilike(search_term) |
+            Biography.summary.ilike(search_term)
         )
-
     if country:
-        query = query.filter(models.Biography.country.ilike(f"%{country}%"))
-
+        query = query.filter(Biography.country.ilike(f"%{country}%"))
     if category:
-        query = query.filter(models.Biography.category.ilike(category.strip()))
+        query = query.filter(Biography.category.ilike(category.strip()))
 
     total = query.count()
     biographies = query.offset(skip).limit(limit).all()
 
-    base_url = str(request.base_url)
+    return {"total": total, "biographies": biographies}
 
-    # ✅ Enhance each biography with full image & flag URLs
-    processed_bios = []
-    for bio in biographies:
-        processed_bios.append({
-            "id": bio.id,
-            "name": bio.name,
-            "summary": bio.summary,
-            "details": bio.details,
-            "country": bio.country,
-            "category": bio.category,
-            "image": bio.image,
-            "flag": bio.country,
-        })
 
-    return {
-        "total": total,
-        "biographies": processed_bios
-    }
-
-@router.get("/category")
+@router.get("/categories")
 def get_categories(db: Session = Depends(get_db)):
     all_categories = set()
+    categories = db.query(Biography.category).all()
 
-    categories = db.query(models.Biography.category).all()
-
-    for (category_str,) in categories:  # unpack tuple
+    for (category_str,) in categories:
         if category_str:
-            # Replace "&" with "," so both are treated as separators
             raw_categories = category_str.replace("&", ",").split(",")
-
-            # Clean and normalize
             for cat in raw_categories:
                 cleaned = cat.strip()
                 if cleaned:
                     all_categories.add(cleaned)
 
-    # Convert set to sorted list
     return {"categories": sorted(all_categories)}
 
-# @router.get("/category")
-# def get_categories(db: Session = Depends(get_db)):
-#     categories = db.query(models.Biography.category).distinct().all()
-#     return {"categories": [c[0] for c in categories if c[0]]}
 
+@router.get("/{slug_or_id}", response_model=BiographyOut)
+def get_biography(slug_or_id: str, db: Session = Depends(get_db)):
+    # Try slug first
+    bio = db.query(Biography).filter(Biography.slug == slug_or_id).first()
 
+    # If not found by slug, try by ID
+    if not bio:
+        try:
+            bio_id = int(slug_or_id)
+            bio = db.query(Biography).filter(Biography.id == bio_id).first()
+        except ValueError:
+            pass
 
-
+    if not bio:
+        raise HTTPException(status_code=404, detail="Biography not found")
+    return bio
