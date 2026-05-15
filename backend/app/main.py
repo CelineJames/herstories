@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.models import Biography, ArchiveItem
 from app import database
-from app.routes import biography, archive, submissions, blog, chat
+from app.routes import biography, archive, submissions, blog, chat, admin
 import os
 
 database.Base.metadata.create_all(bind=database.engine)
@@ -24,6 +24,7 @@ app.include_router(archive.router)
 app.include_router(submissions.router)
 app.include_router(blog.router)
 app.include_router(chat.router)
+app.include_router(admin.router)
 
 
 @app.get("/health")
