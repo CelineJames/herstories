@@ -10,8 +10,10 @@ import Container from "@/components/container";
 interface Biography {
   id: number;
   name: string;
+  slug: string;
   summary: string;
   image: string;
+  flag: string | null;
   country: string;
 }
 
@@ -111,11 +113,15 @@ export default function BiographyList() {
               <div
                 key={bio.id}
                 className="bg-white rounded shadow p-4 hover:shadow-lg transition cursor-pointer"
-                onClick={() => router.push(`/biography/${bio.id}`)}
+                onClick={() => router.push(`/biography/${bio.slug}`)}
               >
                 <div className="relative w-full h-80 rounded-lg overflow-hidden mb-4">
                   <Image
-                    src={`https://herstories-backend.onrender.com/static/${bio.image}`}
+                    src={
+                      bio.image?.startsWith("http")
+                        ? bio.image
+                        : `https://herstories-media.s3.us-east-1.amazonaws.com/assets/${bio.image}`
+                    }
                     alt={bio.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -124,7 +130,11 @@ export default function BiographyList() {
                   <div className="absolute top-[6px] left-[6px] w-8 h-6 rounded overflow-hidden border border-white shadow">
                     {bio.country && (
                       <Image
-                        src={`https://herstories-backend.onrender.com/static/flags/${bio.country}.png`}
+                        src={
+                          bio.flag?.startsWith("http")
+                            ? bio.flag
+                            : `https://herstories-media.s3.us-east-1.amazonaws.com/assets/flags/${bio.country}.png`
+                        }
                         alt={bio.country}
                         fill
                         className="object-cover"
