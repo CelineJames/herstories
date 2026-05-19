@@ -8,9 +8,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 function Room() {
-  const walls = useTexture("/walls.jpg");
-  const floor = useTexture("/procelain.jpg");
-  const roof = useTexture("/ceiling.jpg");
+  const S3 = "https://herstories-media.s3.us-east-1.amazonaws.com/textures";
+  const walls = useTexture(`${S3}/walls.jpg`);
+  const floor = useTexture(`${S3}/procelain.jpg`);
+  const roof = useTexture(`${S3}/ceiling.jpg`);
 
   const width = 22;
   const height = 12;
