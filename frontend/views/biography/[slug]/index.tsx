@@ -91,13 +91,13 @@ export default function BiographyDetail(): React.ReactElement {
   return (
     <div className="min-h-screen bg-ashwhite">
       {/* Hero image */}
-      <div className="relative w-full h-72 md:h-[60vh] bg-primarydeep">
+      <div className="relative w-full h-72 md:h-[70vh] bg-primarydeep">
         <Image
           src={imageUrl}
           alt={`Portrait of ${bio.name}`}
           fill
           priority
-          className="object-cover object-top opacity-80"
+          className="object-cover object-center opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8 md:p-16">
           <span className="inline-block px-3 py-1 rounded-full text-xs font-poppins bg-secondary/80 text-white mb-4 w-fit">

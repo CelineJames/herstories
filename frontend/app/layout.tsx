@@ -5,8 +5,45 @@ import Footer from "@/components/footer";
 import ChatWidget from "@/components/chat-widget";
 
 export const metadata: Metadata = {
-  title: "HerStories",
-  description: "Documenting Her, Defining Us....",
+  title: {
+    default: "HerStories — Documenting Her, Defining Us...",
+    template: "%s | HerStories",
+  },
+  description:
+    "A digital archive celebrating the African women who shaped history — their biographies, stories, and legacies.",
+  keywords: [
+    "African women",
+    "African history",
+    "women's history",
+    "biography",
+    "archive",
+    "Africa",
+    "feminism",
+    "activism",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: "HerStories",
+    title: "HerStories — Documenting Her, Defining Us...",
+    description:
+      "A digital archive celebrating the African women who shaped history — their biographies, stories, and legacies.",
+    url: "https://herstories-africa.vercel.app",
+    images: [
+      {
+        url: "https://herstories-africa.vercel.app/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "HerStories — Documenting Her, Defining Us...",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HerStories — Documenting Her, Defining Us...",
+    description:
+      "A digital archive celebrating the African women who shaped history — their biographies, stories, and legacies.",
+    images: ["https://herstories-africa.vercel.app/logo.png"],
+  },
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
