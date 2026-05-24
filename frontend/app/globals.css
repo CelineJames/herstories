@@ -32,8 +32,15 @@ body {
   overflow-x: hidden;
   font-size: 16px;
   font-family: "Lufga", serif;
+  background-color: #fafafa;
+  transition: background-color 0.3s ease;
 }
 
+html.dark,
+html.dark body {
+  background-color: #1a0a2e;
+  color: #f5f0ff;
+}
 h1,
 h2,
 h3,

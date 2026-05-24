@@ -10,7 +10,7 @@ import Container from "./container";
 
 export default function Footer() {
   return (
-    <div className="w-full bg-primary text-ashwhite p-8 py-10 md:px-20 mt-12">
+    <div className="w-full bg-primary dark:bg-dark-bg text-ashwhite p-8 py-10 md:px-20 mt-12 transition-colors duration-300">
       <Container>
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-10  mx-auto">
           {/* Logo & Description */}
@@ -87,21 +87,21 @@ export default function Footer() {
           </p>
           <div className="flex justify-between items-center gap-6">
             <Image
-              src="/assets/facebook.png"
+              src="https://herstories-media.s3.us-east-1.amazonaws.com/assets/facebook.png"
               alt=""
               width={20}
               height={20}
               className="cursor-pointer hover:opacity-80 transition"
             />
             <Image
-              src="/assets/twitter.png"
+              src="https://herstories-media.s3.us-east-1.amazonaws.com/assets/twitter.png"
               alt=""
               width={20}
               height={20}
               className="cursor-pointer hover:opacity-80 transition"
             />
             <Image
-              src="/assets/linkedIn.png"
+              src="https://herstories-media.s3.us-east-1.amazonaws.com/assets/linkedIn.png"
               alt=""
               width={20}
               height={20}
@@ -115,7 +115,7 @@ export default function Footer() {
             className="cursor-pointer hover:opacity-80 transition"
           /> */}
             <Image
-              src="/assets/instagram.png"
+              src="https://herstories-media.s3.us-east-1.amazonaws.com/assets/instagram.png"
               alt=""
               width={20}
               height={20}

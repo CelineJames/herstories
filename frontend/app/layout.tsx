@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ChatWidget from "@/components/chat-widget";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: {
@@ -63,10 +64,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main className="pt-20">{children}</main>
-        <Footer />
-        <ChatWidget />
+        <ThemeProvider>
+          <Header />
+          <main className="pt-20">{children}</main>
+          <Footer />
+          <ChatWidget />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -29,7 +29,7 @@ import Link from "next/link";
 
 export default function AboutUs(): React.ReactElement {
   return (
-    <Container className="min-h-screen bg-white">
+    <Container className="min-h-screen bg-white dark:bg-dark-bg transition-colors duration-300">
       <div className="w-full bg-primary mx-auto relative aspect-[4/4] md:aspect-[5/2] overflow-hidden md:rounded-xl max-h-[400px]">
         {/* Background Image */}
         <Image
@@ -49,10 +49,10 @@ export default function AboutUs(): React.ReactElement {
       {/* who are we */}
       <div className="px-6 w-full md:w-[60%] mx-auto font-poppins mt-6">
         <Button className="mt-6">Our Mission</Button>
-        <h1 className="font-alnevrada text-3xl font-semibold mb-4">
+        <h1 className="font-alnevrada text-3xl font-semibold mb-4 dark:text-dark-text">
           Who are we?
         </h1>
-        <p className="font-light">
+        <p className="font-light dark:text-dark-muted">
           <span className="font-semibold font-alnevrada">HerStories</span> is a
           digital sanctuary where the voices of African women, past and present
           are remembered, revered, and re-centered.
@@ -76,7 +76,7 @@ export default function AboutUs(): React.ReactElement {
         {/* Image Section */}
         <div className="w-full md:w-[40%] lg:max-w-[450px] aspect-[1/1] rounded-xl overflow-hidden relative">
           <Image
-            src="/assets/aboutus-2.jpg"
+            src="https://herstories-media.s3.us-east-1.amazonaws.com/assets/aboutus-2.jpg"
             alt=""
             fill
             className="object-cover"
@@ -86,14 +86,15 @@ export default function AboutUs(): React.ReactElement {
         {/* Text Section */}
         <div className="md:w-1/2 space-y-4 font-poppins">
           <Button>Our Vision</Button>
-
-          <h2 className="font-alnevrada text-2xl md:text-3xl font-bold ">
+          <h2 className="font-alnevrada text-2xl md:text-3xl font-bold dark:text-dark-text">
             What are we after?
           </h2>
 
-          <p className="text-base md:text-lg">We envision a world where:</p>
+          <p className="text-base md:text-lg dark:text-dark-muted">
+            We envision a world where:
+          </p>
 
-          <ul className="list-disc pl-5 space-y-2 text-sm md:text-base">
+          <ul className="list-disc pl-5 space-y-2 text-sm md:text-base dark:text-dark-muted">
             <li>
               African girls grow up seeing themselves reflected in greatness.
             </li>
@@ -122,8 +123,8 @@ export default function AboutUs(): React.ReactElement {
       <div className="flex flex-col md:flex-row md:justify-center items-start md:items-center gap-10 mt-24 px-6 mx-auto">
         <div className="relative w-full md:w-[40%] lg:max-w-[450px] h-[500px] rounded-xl overflow-hidden">
           <Image
-            src="/assets/aboutus-1.webp"
-            alt="Ngozi Okonjo-Iweala"
+            src="https://herstories-media.s3.us-east-1.amazonaws.com/assets/aboutus-1.webp"
+            alt=""
             fill
             className="object-cover"
           />
@@ -131,27 +132,27 @@ export default function AboutUs(): React.ReactElement {
 
         <div className="md:w-1/2 space-y-4 font-poppins">
           <Button className="py-2">Why Herstories?</Button>
-          <h2 className="font-alnevrada font-bold text-2xl md:text-3xl">
+          <h2 className="font-alnevrada font-bold text-2xl md:text-3xl dark:text-dark-text">
             “Until the lion learns to write, every story will glorify the
             hunter.”
           </h2>
-          <span className="font-alnevrada font-semibold text-xl">
+          <span className="font-alnevrada font-semibold text-xl dark:text-dark-muted">
             — African proverb
           </span>
-          <p>
-            History, as it’s often taught, is a selective memory. It is curated
-            through lenses that have too often excluded African women even
-            though they led revolutions, formed intellectual networks, protected
-            cultures, bore nations, and resisted oppression in ways both loud
-            and quiet. History has been made by women countless times, even by
-            our mothers and foremothers, my professor once said in class, your
-            grandmother probably made history, but who wrote it? Nobody.
+          <p className="dark:text-dark-muted">
+            History, as it&apos;s often taught through lenses that have too
+            often excluded African women even though they led revolutions,
+            formed intellectual networks, protected cultures, bore nations, and
+            resisted oppression in ways both loud and quiet. History has been
+            made by women countless times, even by our mothers and foremothers,
+            my professor once said in class, your grandmother probably made
+            history, but who wrote it? Nobody.
           </p>
           <span className="font-alnevrada font-semibold inline-block">
             - Dr Obar Irom
           </span>
           <br />
-          <p>
+          <p className="dark:text-dark-muted">
             <span className="font-bold font-alnevrada">HerStories</span> is not
             just about correction, it&apos;s about expansion. We are expanding
             the frame so that no girl, woman, or community ever doubts the power
@@ -177,7 +178,7 @@ export default function AboutUs(): React.ReactElement {
         {/* Image Section */}
         <div className="w-full md:w-[40%] lg:max-w-[450px] aspect-[1/1] rounded-xl overflow-hidden relative">
           <Image
-            src="/assets/community-work.jpg"
+            src="https://herstories-media.s3.us-east-1.amazonaws.com/assets/community-work.jpg"
             alt=""
             fill
             className="object-cover"
@@ -188,16 +189,16 @@ export default function AboutUs(): React.ReactElement {
         <div className="md:w-1/2 space-y-4 font-poppins">
           <Button>How We Work</Button>
 
-          <h2 className="font-alnevrada text-2xl md:text-3xl font-bold ">
+          <h2 className="font-alnevrada text-2xl md:text-3xl font-bold dark:text-dark-text">
             How do we get it all done?
           </h2>
 
-          <p className="text-base md:text-lg">
+          <p className="text-base md:text-lg dark:text-dark-muted">
             <span className="font-alnevrada font-bold">HerStories</span> is a
             collaborative project. We:
           </p>
 
-          <ul className="list-disc pl-5 space-y-2 text-sm md:text-base">
+          <ul className="list-disc pl-5 space-y-2 text-sm md:text-base dark:text-dark-muted">
             <li>Digitize oral accounts, photos, and documents.</li>
             <li>
               Invite users to submit stories or tributes through our platform.
@@ -219,18 +220,18 @@ export default function AboutUs(): React.ReactElement {
       </div>
 
       {/* CTA */}
-      <div className="mt-16 flex flex-col md:flex-row md:justify-between md:items-center bg-primarydeep text-white p-6 md:p-10 lg:p-24 mx-4 rounded-xl md:rounded-3xl gap-8">
+      <div className="mt-16 flex flex-col md:flex-row md:justify-between md:items-center bg-primarydeep dark:bg-dark-surface text-white p-6 md:p-10 lg:p-24 mx-4 rounded-xl md:rounded-3xl gap-8 transition-colors duration-300">
         <div>
-          <h3 className="font-alnevrada text-2xl md:text-3xl mb-6">
+          <h3 className="font-alnevrada text-2xl md:text-3xl mb-6 text-white">
             This is your archive too.
           </h3>
-          <p className="font-poppins font-light mb-8">
+          <p className="font-poppins font-light mb-8 text-white/80">
             We invite everyone, storytellers, scholars, community members, and
             seekers, to walk with us in this journey of restoration. Whether
-            you’re here to read, to contribute, to listen, or to learn, welcome
+            you&apos;re here to read, to contribute, to listen, or to learn, welcome
             home. Because when we document Her, we define ourselves.
           </p>
-          <p className="font-alnevrada font-semibold text-xl md:text-xl">
+          <p className="font-alnevrada font-semibold text-xl md:text-xl text-white/90">
             Because when we document Her, we define ourselves.
           </p>
         </div>

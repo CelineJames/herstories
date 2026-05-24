@@ -19,7 +19,7 @@ interface Biography {
 
 function SkeletonCard() {
   return (
-    <div className="bg-white rounded shadow p-4">
+    <div className="bg-white dark:bg-dark-surface rounded shadow p-4">
       <div className="w-full h-80 bg-gray-200 rounded-lg mb-4 animate-pulse" />
       <div className="h-5 bg-gray-200 rounded mb-2 w-3/4 animate-pulse" />
       <div className="h-4 bg-gray-100 rounded mb-1 animate-pulse" />
@@ -63,7 +63,7 @@ export default function BiographyList() {
 
   return (
     <Container className="p-6 mt-20">
-      <h1 className="font-alnevrada font-bold text-4xl text-center mb-8">
+      <h1 className="font-alnevrada font-bold text-4xl text-center mb-8 dark:text-dark-text">
         Biographies
       </h1>
 
@@ -77,7 +77,7 @@ export default function BiographyList() {
             setSearchTerm(e.target.value);
             setPage(1);
           }}
-          className="w-full md:w-1/3 p-2 border rounded"
+          className="w-full md:w-1/3 p-2 border rounded bg-white dark:bg-dark-surface dark:border-dark-muted dark:text-dark-text focus:outline-none focus:border-primary"
         />
 
         <select
@@ -86,7 +86,7 @@ export default function BiographyList() {
             setSelectedCategory(e.target.value);
             setPage(1);
           }}
-          className="w-full md:w-1/4 p-2 border rounded"
+          className="w-full md:w-1/4 p-2 border rounded bg-white dark:bg-dark-surface dark:border-dark-muted dark:text-dark-text focus:outline-none focus:border-primary"
         >
           <option value="">All Categories</option>
           {categories.map((category: string) => (
@@ -112,7 +112,7 @@ export default function BiographyList() {
             {biographies.map((bio) => (
               <div
                 key={bio.id}
-                className="bg-white rounded shadow p-4 hover:shadow-lg transition cursor-pointer"
+                className="bg-white dark:bg-dark-surface rounded shadow p-4 hover:shadow-lg transition cursor-pointer"
                 onClick={() => router.push(`/biography/${bio.slug}`)}
               >
                 <div className="relative w-full h-80 rounded-lg overflow-hidden mb-4">
@@ -142,11 +142,15 @@ export default function BiographyList() {
                     )}
                   </div>
                 </div>
-                <h3 className="text-lg font-bold mb-1">{bio.name}</h3>
-                <p className="text-sm text-gray-600 mb-2">{bio.summary}</p>
+                <h3 className="text-lg font-bold mb-1 dark:text-dark-text">
+                  {bio.name}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-dark-muted mb-2">
+                  {bio.summary}
+                </p>
                 <Link
-                  href={`/biography/${bio.id}`}
-                  className="text-primary font-medium mt-2 inline-block"
+                  href={`/biography/${bio.slug}`}
+                  className="text-primary dark:text-dark-muted font-medium mt-2 inline-block hover:text-secondary dark:hover:text-secondary transition-colors"
                 >
                   Read More →
                 </Link>
@@ -164,7 +168,7 @@ export default function BiographyList() {
             disabled={page === 1}
             className={`px-4 py-2 rounded transition-all ${
               page === 1
-                ? "bg-primary/45 text-black/50 cursor-not-allowed"
+                ? "bg-primary/45 text-black/50 dark:text-white/50 cursor-not-allowed"
                 : "bg-primary text-white hover:bg-primary/90"
             }`}
           >
@@ -178,7 +182,7 @@ export default function BiographyList() {
               className={`px-4 py-2 border rounded transition-all ${
                 page === i + 1
                   ? "bg-primary text-white"
-                  : "bg-white text-black hover:bg-gray-100"
+                  : "bg-white dark:bg-dark-surface text-black dark:text-dark-text hover:bg-gray-100 dark:hover:bg-dark-border"
               }`}
             >
               {i + 1}
@@ -192,7 +196,7 @@ export default function BiographyList() {
             disabled={page === totalPages}
             className={`px-4 py-2 rounded transition-all ${
               page === totalPages
-                ? "bg-primary/45 text-black/40 cursor-not-allowed"
+                ? "bg-primary/45 text-black/40 dark:text-white/50 cursor-not-allowed"
                 : "bg-primary text-white hover:bg-primary/90"
             }`}
           >

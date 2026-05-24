@@ -89,7 +89,7 @@ export default function BlogList(): React.ReactElement {
   const remainingPosts = posts.slice(1);
 
   return (
-    <div className="min-h-screen bg-ashwhite">
+    <div className="min-h-screen bg-ashwhite dark:bg-dark-bg transition-colors duration-300">
       {/* Hero */}
       <div className="bg-primarydeep py-20 px-4 text-center">
         <h1 className="font-alnevrada text-4xl md:text-6xl text-white mb-4">
@@ -112,7 +112,7 @@ export default function BlogList(): React.ReactElement {
             className={`px-4 py-1.5 rounded-full text-sm font-poppins border transition-colors ${
               activeCategory === ""
                 ? "bg-primary text-white border-primary"
-                : "bg-white text-gray-600 border-gray-300 hover:border-primary"
+                : "bg-white dark:bg-dark-surface text-gray-600 dark:text-dark-muted border-gray-300 dark:border-dark-border hover:border-primary"
             }`}
           >
             All
@@ -127,7 +127,7 @@ export default function BlogList(): React.ReactElement {
               className={`px-4 py-1.5 rounded-full text-sm font-poppins border transition-colors ${
                 activeCategory === cat
                   ? "bg-primary text-white border-primary"
-                  : "bg-white text-gray-600 border-gray-300 hover:border-primary"
+                  : "bg-white dark:bg-dark-surface text-gray-600 dark:text-dark-muted border-gray-300 dark:border-dark-border hover:border-primary"
               }`}
             >
               {cat}
@@ -139,12 +139,12 @@ export default function BlogList(): React.ReactElement {
       <div className="max-w-6xl mx-auto px-4 pb-16">
         {loading ? (
           <div className="space-y-6">
-            <div className="h-96 bg-gray-200 rounded-2xl animate-pulse" />
+            <div className="h-96 bg-gray-200 dark:bg-dark-surface rounded-2xl animate-pulse" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(3)].map((_, i) => (
                 <div
                   key={i}
-                  className="h-64 bg-gray-200 rounded-2xl animate-pulse"
+                  className="h-64 bg-gray-200 dark:bg-dark-surface rounded-2xl animate-pulse"
                 />
               ))}
             </div>
@@ -209,7 +209,7 @@ export default function BlogList(): React.ReactElement {
                   <div
                     key={post.id}
                     onClick={() => router.push(`/blog/${post.slug}`)}
-                    className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                    className="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
                   >
                     <div className="relative h-48 bg-primarydeep">
                       {post.cover_image ? (
@@ -234,15 +234,15 @@ export default function BlogList(): React.ReactElement {
                       )}
                     </div>
                     <div className="p-5">
-                      <h3 className="font-alnevrada text-xl text-primarydeep mb-2 leading-tight line-clamp-2">
+                      <h3 className="font-alnevrada text-xl text-primarydeep dark:text-dark-text mb-2 leading-tight line-clamp-2">
                         {post.title}
                       </h3>
                       {post.excerpt && (
-                        <p className="font-poppins text-gray-500 text-sm line-clamp-3 mb-4">
+                        <p className="font-poppins text-gray-500 dark:text-dark-muted text-sm line-clamp-3 mb-4">
                           {post.excerpt}
                         </p>
                       )}
-                      <p className="font-poppins text-gray-400 text-xs">
+                      <p className="font-poppins text-gray-400 dark:text-dark-muted text-xs">
                         {formatDate(post.created_at)}
                       </p>
                     </div>
@@ -257,17 +257,17 @@ export default function BlogList(): React.ReactElement {
                 <button
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={page === 1}
-                  className="px-4 py-2 rounded-full border font-poppins text-sm disabled:opacity-40 hover:border-primary transition-colors"
+                  className="px-4 py-2 rounded-full border dark:border-dark-border font-poppins text-sm disabled:opacity-40 hover:border-primary dark:text-dark-text transition-colors"
                 >
                   Previous
                 </button>
-                <span className="px-4 py-2 text-sm font-poppins text-gray-500">
+                <span className="px-4 py-2 text-sm font-poppins text-gray-500 dark:text-dark-muted">
                   {page} of {totalPages}
                 </span>
                 <button
                   onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                   disabled={page === totalPages}
-                  className="px-4 py-2 rounded-full border font-poppins text-sm disabled:opacity-40 hover:border-primary transition-colors"
+                  className="px-4 py-2 rounded-full border dark:border-dark-border font-poppins text-sm disabled:opacity-40 hover:border-primary dark:text-dark-text transition-colors"
                 >
                   Next
                 </button>

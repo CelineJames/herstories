@@ -62,7 +62,7 @@ export default function BiographyDetail(): React.ReactElement {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center dark:bg-dark-bg">
         <p className="font-poppins text-gray-400 animate-pulse">Loading...</p>
       </div>
     );
@@ -70,7 +70,7 @@ export default function BiographyDetail(): React.ReactElement {
 
   if (!bio) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center">
+      <div className="min-h-screen flex flex-col items-center justify-center dark:bg-dark-bg">
         <p className="font-alnevrada text-2xl text-gray-400 mb-4">
           Biography not found
         </p>
@@ -89,7 +89,7 @@ export default function BiographyDetail(): React.ReactElement {
     : `/assets/${bio.image}`;
 
   return (
-    <div className="min-h-screen bg-ashwhite">
+    <div className="min-h-screen bg-ashwhite dark:bg-dark-bg transition-colors duration-300">
       {/* Hero image */}
       <div className="relative w-full h-72 md:h-[70vh] bg-primarydeep">
         <Image
@@ -117,14 +117,14 @@ export default function BiographyDetail(): React.ReactElement {
         {/* Back button */}
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-sm font-poppins text-gray-400 hover:text-primary transition-colors"
+          className="flex items-center gap-2 text-sm font-poppins text-gray-400 dark:text-dark-muted hover:text-primary transition-colors"
         >
           ← Back
         </button>
 
         {/* Summary */}
-        <section className="bg-white rounded-2xl p-6 shadow-sm">
-          <p className="text-gray-700 font-lufga text-lg leading-relaxed">
+        <section className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm">
+          <p className="text-gray-700 dark:text-dark-muted font-lufga text-lg leading-relaxed">
             {bio.summary}
           </p>
         </section>
@@ -132,16 +132,16 @@ export default function BiographyDetail(): React.ReactElement {
         {/* Basic Info */}
         {bio.details?.basic_info && (
           <section>
-            <h2 className="font-alnevrada text-2xl text-primarydeep mb-4">
+            <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-4">
               Basic info
             </h2>
-            <div className="bg-white rounded-2xl p-6 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4">
               {bio.details.basic_info.full_name && (
                 <div>
-                  <p className="text-xs text-gray-400 font-poppins uppercase tracking-wide">
+                  <p className="text-xs text-gray-400 dark:text-dark-muted font-poppins uppercase tracking-wide">
                     Full name
                   </p>
-                  <p className="font-poppins text-gray-700">
+                  <p className="font-poppins text-gray-700 dark:text-dark-muted">
                     {bio.details.basic_info.full_name}
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export default function BiographyDetail(): React.ReactElement {
                   <p className="text-xs text-gray-400 font-poppins uppercase tracking-wide">
                     Born
                   </p>
-                  <p className="font-poppins text-gray-700">
+                  <p className="font-poppins text-gray-700 dark:text-dark-muted">
                     {bio.details.basic_info.birth}
                   </p>
                 </div>
@@ -161,7 +161,7 @@ export default function BiographyDetail(): React.ReactElement {
                   <p className="text-xs text-gray-400 font-poppins uppercase tracking-wide">
                     Nationality
                   </p>
-                  <p className="font-poppins text-gray-700">
+                  <p className="font-poppins text-gray-700 dark:text-dark-muted">
                     {bio.details.basic_info.nationality}
                   </p>
                 </div>
@@ -171,7 +171,7 @@ export default function BiographyDetail(): React.ReactElement {
                   <p className="text-xs text-gray-400 font-poppins uppercase tracking-wide">
                     Status
                   </p>
-                  <p className="font-poppins text-gray-700">
+                  <p className="font-poppins text-gray-700 dark:text-dark-muted">
                     {bio.details.basic_info.status}
                   </p>
                 </div>
@@ -183,22 +183,25 @@ export default function BiographyDetail(): React.ReactElement {
         {/* Education */}
         {bio.details?.education && bio.details.education.length > 0 && (
           <section>
-            <h2 className="font-alnevrada text-2xl text-primarydeep mb-4">
+            <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-4">
               Education
             </h2>
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-4">
               {bio.details.education.map((edu, idx) => (
-                <div key={idx} className="border-l-2 border-primary pl-4">
-                  <p className="font-poppins font-medium text-gray-800">
+                <div
+                  key={idx}
+                  className="border-l-2 border-primary dark:border-dark-muted pl-4"
+                >
+                  <p className="font-poppins font-medium text-gray-800 dark:text-dark-text">
                     {edu.institution}
                   </p>
                   {edu.degree && (
-                    <p className="font-poppins text-gray-600 text-sm">
+                    <p className="font-poppins text-gray-600 dark:text-dark-muted text-sm">
                       {edu.degree}
                     </p>
                   )}
                   {edu.year && (
-                    <p className="font-poppins text-gray-400 text-xs">
+                    <p className="font-poppins text-gray-400 dark:text-dark-muted text-xs">
                       {edu.year}
                     </p>
                   )}
@@ -212,14 +215,14 @@ export default function BiographyDetail(): React.ReactElement {
         {bio.details?.career_highlights &&
           bio.details.career_highlights.length > 0 && (
             <section>
-              <h2 className="font-alnevrada text-2xl text-primarydeep mb-4">
+              <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-4">
                 Career highlights
               </h2>
-              <div className="bg-white rounded-2xl p-6 shadow-sm space-y-3">
+              <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
                 {bio.details.career_highlights.map((item, idx) => (
                   <div key={idx} className="flex gap-3">
                     <span className="text-secondary mt-1 shrink-0">◆</span>
-                    <p className="font-poppins text-gray-700 text-sm leading-relaxed">
+                    <p className="font-poppins text-gray-700 dark:text-dark-muted text-sm leading-relaxed">
                       {item}
                     </p>
                   </div>
@@ -231,14 +234,16 @@ export default function BiographyDetail(): React.ReactElement {
         {/* Honors */}
         {bio.details?.honors && bio.details.honors.length > 0 && (
           <section>
-            <h2 className="font-alnevrada text-2xl text-primarydeep mb-4">
+            <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-4">
               Honors & awards
             </h2>
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-3">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
               {bio.details.honors.map((item, idx) => (
                 <div key={idx} className="flex gap-3">
-                  <span className="text-primary mt-1 shrink-0">★</span>
-                  <p className="font-poppins text-gray-700 text-sm leading-relaxed">
+                  <span className="text-primary dark:text-secondary mt-1 shrink-0">
+                    ★
+                  </span>
+                  <p className="font-poppins text-gray-700 dark:text-dark-muted text-sm leading-relaxed">
                     {item}
                   </p>
                 </div>
@@ -250,14 +255,14 @@ export default function BiographyDetail(): React.ReactElement {
         {/* Personal Life */}
         {bio.details?.personal_life && bio.details.personal_life.length > 0 && (
           <section>
-            <h2 className="font-alnevrada text-2xl text-primarydeep mb-4">
+            <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-4">
               Personal life
             </h2>
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-3">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
               {bio.details.personal_life.map((item, idx) => (
                 <p
                   key={idx}
-                  className="font-poppins text-gray-700 text-sm leading-relaxed"
+                  className="font-poppins text-gray-700 dark:text-dark-muted text-sm leading-relaxed"
                 >
                   {item}
                 </p>
@@ -270,14 +275,14 @@ export default function BiographyDetail(): React.ReactElement {
         {bio.details?.impact_and_influence &&
           bio.details.impact_and_influence.length > 0 && (
             <section>
-              <h2 className="font-alnevrada text-2xl text-primarydeep mb-4">
+              <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-4">
                 Impact & influence
               </h2>
-              <div className="bg-white rounded-2xl p-6 shadow-sm space-y-3">
+              <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
                 {bio.details.impact_and_influence.map((item, idx) => (
                   <div key={idx} className="flex gap-3">
                     <span className="text-secondary mt-1 shrink-0">→</span>
-                    <p className="font-poppins text-gray-700 text-sm leading-relaxed">
+                    <p className="font-poppins text-gray-700 dark:text-dark-muted text-sm leading-relaxed">
                       {item}
                     </p>
                   </div>
@@ -288,11 +293,11 @@ export default function BiographyDetail(): React.ReactElement {
 
         {/* Full Summary */}
         {bio.details?.full_summary && (
-          <section className="bg-primarydeep rounded-2xl p-8">
-            <h2 className="font-alnevrada text-2xl text-white mb-4">
+          <section className="bg-primarydeep dark:bg-dark-surface rounded-2xl p-8 transition-colors duration-300">
+            <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-4">
               Her story
             </h2>
-            <p className="font-lufga text-white/80 leading-relaxed">
+            <p className="font-lufga text-white/80  dark:text-dark-muted leading-relaxed">
               {bio.details.full_summary}
             </p>
           </section>
