@@ -22,17 +22,19 @@ export default function FeaturedBio(): React.ReactElement {
   }, []);
 
   return (
-    <div className="bg-ashwhite flex flex-col md:flex-row-reverse md:justify-around md:items-center py-12 gap-6 px-6">
+    <div className="bg-ashwhite dark:bg-dark-bg flex flex-col md:flex-row-reverse md:justify-around md:items-center py-12 gap-6 px-6 transition-colors duration-300">
       {/* Text Content */}
       <div className="md:w-[60%]">
         <Button className="">Featured Story</Button>
-        <h1 className="font-alnevrada text-3xl font-semibold mb-2">
+        <h1 className="font-alnevrada text-3xl font-semibold mb-2 dark:text-dark-text">
           {bio.name}
         </h1>
-        <p className="font-lufga text-navyblue font-light">{bio.details}</p>
+        <p className="font-lufga text-navyblue dark:text-dark-muted font-light">
+          {bio.details}
+        </p>
 
         <Link
-          href={`/biography/${bio.id}`}
+          href={`/biography/${bio.slug}`}
           className="inline-flex items-center gap-1 text-secondary border-b border-secondary pb-[1px] group transition mt-8"
         >
           Read Biography

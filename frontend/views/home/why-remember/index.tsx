@@ -7,13 +7,13 @@ export default function WhyRemember(): React.ReactElement {
   return (
     <>
       {/* Why we remeber section */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 py-10 px-6 lg:px-24">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 py-10 px-6 lg:px-24 bg-ashwhite dark:bg-dark-bg transition-colors duration-300">
         <div className="px-6 md:px-0">
           <Button className="">Our Vision</Button>
-          <h2 className="font-alnevrada text-3xl font-semibold mb-2">
+          <h2 className="font-alnevrada text-3xl font-semibold mb-2 dark:text-dark-text">
             Why we remember
           </h2>
-          <p className="font-poppins text-navyblue font-light">
+          <p className="font-poppins text-navyblue dark:text-dark-muted font-light">
             We preserve memories to honor lives, inspire hope, and connect
             generations
           </p>

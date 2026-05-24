@@ -4,7 +4,7 @@ export default function CallToAction(): React.ReactElement {
   return (
     <>
       {/* Call to action */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center bg-primarydeep text-white p-6 md:p-10 lg:p-24 mx-4 rounded-xl md:rounded-3xl gap-8">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center bg-primarydeep dark:bg-dark-surface text-white p-6 md:p-10 lg:p-24 mx-4 rounded-xl md:rounded-3xl gap-8 transition-colors duration-300">
         <div>
           <h3 className="font-alnevrada text-lg mb-2 md:text-2xl">
             Be part of the community

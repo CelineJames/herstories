@@ -11,59 +11,69 @@ type heroItems = {
 
 const heroData: heroItems[] = [
   {
-    image: "/assets/ngozi-iweala.jpg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/ngozi-iweala.jpg",
     quote:
       "I'm a fighter; I'm very focused on what I'm doing, and relentless in what I want to achieve, almost to a fault. If you get in my way, you get kicked.",
     name: "Ngozi Okonjo-Iweala",
   },
   {
-    image: "/assets/ala-salah2.jpg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/ala-salah2.jpg",
     quote: "I am here to fight for the future generation.",
     name: "Alaa Salah",
   },
   {
-    image: "/assets/zaha.jpeg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/zaha.jpeg",
     quote:
       "Women are always told, 'You're not going to make it, it's too difficult, you can't do that, don't enter this competition, you'll never win it,' - they need confidence in themselves and people around them to help them to get on.",
     name: "Zaha Hadid",
   },
   {
-    image: "/assets/amel-kabourl.jpg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/amel-kabourl.jpg",
     quote:
-      "We dont need super heroes, we need real people doing meanifull work.",
-    name: "Amel Kabourl",
+      "We dont need super heroes, we need real people doing meaningful work.",
+    name: "Amel Karboul",
   },
   {
-    image: "/assets/sirleaf.jpg",
-    quote: "if your dreams do not scare you, they are not big enough.",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/sirleaf.jpg",
+    quote: "If your dreams do not scare you, they are not big enough.",
     name: "Ellen Sirleaf",
   },
   {
-    image: "/assets/funmi-kuti.jpeg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/funmi-kuti.jpeg",
     quote:
       "My life has been full of struggles, the fight for the emancipation of women...",
     name: "Funmilayo Ransome Kuti",
   },
   {
-    image: "/assets/aoua-keita.jpeg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/aoua-keita.jpeg",
     quote:
       "I wanted to show that a woman too could be a fighter and a builder.",
     name: "Aoua Keita",
   },
   {
-    image: "/assets/ilwad-elman.jpg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/ilwad-elman.jpg",
     quote: "Peace building must include everyone - especially women.",
     name: "Ilwad Elman",
   },
   {
-    image: "/assets/tsitsi-dangaremba.jpeg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/tsitsi-dangaremba.jpeg",
     quote: "The condition of women reflects the condition of the society.",
     name: "Tsitsi Dangaremba",
   },
   {
-    image: "/assets/nawal-sadami.jpeg",
+    image:
+      "https://herstories-media.s3.us-east-1.amazonaws.com/assets/nawal-sadami.jpeg",
     quote:
-      "They said 'You are a savage and dangerous woman' i am speaking the truth and the truth is savage and dangerous.",
+      "They said 'You are a savage and dangerous woman.' I am speaking the truth and the truth is savage and dangerous.",
     name: "Nawal El Saadawi",
   },
 ];

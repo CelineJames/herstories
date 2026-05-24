@@ -102,19 +102,19 @@ export default function SubmitStory(): React.ReactElement {
   // Success state
   if (submitted) {
     return (
-      <div className="min-h-screen bg-ashwhite flex items-center justify-center px-4">
+      <div className="min-h-screen bg-ashwhite dark:bg-dark-bg flex items-center justify-center px-4 transition-colors duration-300">
         <div className="max-w-md w-full text-center">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <span className="text-green-600 text-2xl">✓</span>
           </div>
-          <h2 className="font-alnevrada text-3xl text-primarydeep mb-4">
+          <h2 className="font-alnevrada text-3xl text-primarydeep dark:text-dark-text mb-4">
             Thank you
           </h2>
-          <p className="font-poppins text-gray-600 mb-2">
+          <p className="font-poppins text-gray-600 dark:text-dark-muted mb-2">
             Your submission has been received and is under review.
           </p>
-          <p className="font-poppins text-gray-400 text-sm">
-            We'll be in touch if we need more information or when it's
+          <p className="font-poppins text-gray-400 dark:text-dark-muted text-sm">
+            We&apos;ll be in touch if we need more information or when it&apos;s
             published.
           </p>
           <button
@@ -135,7 +135,7 @@ export default function SubmitStory(): React.ReactElement {
   }
 
   return (
-    <div className="min-h-screen bg-ashwhite">
+    <div className="min-h-screen bg-ashwhite dark:bg-dark-bg transition-colors duration-300">
       {/* Hero */}
       <div className="bg-primarydeep py-20 px-4 text-center">
         <h1 className="font-alnevrada text-4xl md:text-6xl text-white mb-4">
@@ -151,10 +151,10 @@ export default function SubmitStory(): React.ReactElement {
         {/* Step 1 — Choose type */}
         {step === 1 && (
           <div>
-            <h2 className="font-alnevrada text-2xl text-primarydeep mb-2">
+            <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-2">
               What are you submitting?
             </h2>
-            <p className="font-poppins text-gray-500 text-sm mb-8">
+            <p className="font-poppins text-gray-500 dark:text-dark-muted text-sm mb-8">
               Choose the type of submission that best fits what you want to
               share.
             </p>
@@ -166,16 +166,16 @@ export default function SubmitStory(): React.ReactElement {
                 className={`p-6 rounded-2xl border-2 text-left transition-all ${
                   submissionType === "biography"
                     ? "border-primary bg-primary/5"
-                    : "border-gray-200 hover:border-primary/50 bg-white"
+                    : "border-gray-200 dark:border-dark-border hover:border-primary/50 bg-white dark:bg-dark-surface"
                 }`}
               >
                 <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                   <span className="text-primary font-poppins text-lg">✍</span>
                 </div>
-                <h3 className="font-alnevrada text-xl text-primarydeep mb-2">
+                <h3 className="font-alnevrada text-xl text-primarydeep dark:text-dark-text mb-2">
                   Full biography
                 </h3>
-                <p className="font-poppins text-gray-500 text-sm">
+                <p className="font-poppins text-gray-500 dark:text-dark-muted text-sm">
                   Submit a detailed biography of an African woman — her life,
                   achievements, and legacy.
                 </p>
@@ -187,7 +187,7 @@ export default function SubmitStory(): React.ReactElement {
                 className={`p-6 rounded-2xl border-2 text-left transition-all ${
                   submissionType === "archive"
                     ? "border-secondary bg-secondary/5"
-                    : "border-gray-200 hover:border-secondary/50 bg-white"
+                    : "border-gray-200 dark:border-dark-border hover:border-secondary/50 bg-white dark:bg-dark-surface"
                 }`}
               >
                 <div className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
@@ -195,10 +195,10 @@ export default function SubmitStory(): React.ReactElement {
                     📄
                   </span>
                 </div>
-                <h3 className="font-alnevrada text-xl text-primarydeep mb-2">
+                <h3 className="font-alnevrada text-xl text-primarydeep dark:text-dark-text mb-2">
                   Archive document
                 </h3>
-                <p className="font-poppins text-gray-500 text-sm">
+                <p className="font-poppins text-gray-500 dark:text-dark-muted text-sm">
                   Submit a historical document, photograph, oral history, or
                   artwork for the digital archive.
                 </p>
@@ -226,18 +226,18 @@ export default function SubmitStory(): React.ReactElement {
               >
                 ← Back
               </button>
-              <h2 className="font-alnevrada text-2xl text-primarydeep">
+              <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-white/80">
                 Biography details
               </h2>
             </div>
 
             {/* Required fields */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-4">
               <h3 className="font-poppins text-sm text-gray-400 uppercase tracking-wide">
                 Required
               </h3>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Full name
                 </label>
                 <input
@@ -245,12 +245,12 @@ export default function SubmitStory(): React.ReactElement {
                   value={bioForm.subject_name}
                   onChange={(e) => updateBio("subject_name", e.target.value)}
                   placeholder="e.g. Wangari Maathai"
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-poppins text-sm text-gray-700 block mb-1">
+                  <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                     Country
                   </label>
                   <input
@@ -258,17 +258,17 @@ export default function SubmitStory(): React.ReactElement {
                     value={bioForm.country}
                     onChange={(e) => updateBio("country", e.target.value)}
                     placeholder="e.g. Kenya"
-                    className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary"
+                    className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary bg-white dark:bg-dark-bg dark:text-dark-text"
                   />
                 </div>
                 <div>
-                  <label className="font-poppins text-sm text-gray-700 block mb-1">
+                  <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                     Category
                   </label>
                   <select
                     value={bioForm.category}
                     onChange={(e) => updateBio("category", e.target.value)}
-                    className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary"
+                    className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary bg-white dark:bg-dark-bg dark:text-dark-text"
                   >
                     <option value="">Select one</option>
                     <option value="Activist">Activist</option>
@@ -284,7 +284,7 @@ export default function SubmitStory(): React.ReactElement {
                 </div>
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Brief summary
                 </label>
                 <textarea
@@ -292,18 +292,18 @@ export default function SubmitStory(): React.ReactElement {
                   onChange={(e) => updateBio("summary", e.target.value)}
                   placeholder="One or two sentences describing who she is..."
                   rows={3}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
             </div>
 
             {/* Optional fields */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
               <h3 className="font-poppins text-sm text-gray-400 uppercase tracking-wide">
                 Optional — share as much as you know
               </h3>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Education
                 </label>
                 <textarea
@@ -311,11 +311,11 @@ export default function SubmitStory(): React.ReactElement {
                   onChange={(e) => updateBio("education", e.target.value)}
                   placeholder="Schools attended, degrees earned..."
                   rows={3}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Career highlights
                 </label>
                 <textarea
@@ -325,11 +325,11 @@ export default function SubmitStory(): React.ReactElement {
                   }
                   placeholder="Key achievements and milestones..."
                   rows={3}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Honors & awards
                 </label>
                 <textarea
@@ -337,11 +337,11 @@ export default function SubmitStory(): React.ReactElement {
                   onChange={(e) => updateBio("honors", e.target.value)}
                   placeholder="Recognition received..."
                   rows={3}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Impact & influence
                 </label>
                 <textarea
@@ -349,11 +349,11 @@ export default function SubmitStory(): React.ReactElement {
                   onChange={(e) => updateBio("impact", e.target.value)}
                   placeholder="How has she shaped history or her community..."
                   rows={3}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Her full story
                 </label>
                 <textarea
@@ -361,18 +361,18 @@ export default function SubmitStory(): React.ReactElement {
                   onChange={(e) => updateBio("full_story", e.target.value)}
                   placeholder="Tell her story in your own words..."
                   rows={6}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
             </div>
 
             {/* Reason + submitter */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
               <h3 className="font-poppins text-sm text-gray-400 uppercase tracking-wide">
                 About your submission
               </h3>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Why are you submitting this biography?
                 </label>
                 <textarea
@@ -380,12 +380,12 @@ export default function SubmitStory(): React.ReactElement {
                   onChange={(e) => updateBio("reason", e.target.value)}
                   placeholder="Tell us why this woman deserves to be documented..."
                   rows={3}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-poppins text-sm text-gray-700 block mb-1">
+                  <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                     Your name (optional)
                   </label>
                   <input
@@ -395,11 +395,11 @@ export default function SubmitStory(): React.ReactElement {
                       updateBio("submitter_name", e.target.value)
                     }
                     placeholder="Your name"
-                    className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary"
+                    className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary bg-white dark:bg-dark-bg dark:text-dark-text"
                   />
                 </div>
                 <div>
-                  <label className="font-poppins text-sm text-gray-700 block mb-1">
+                  <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                     Your email (optional)
                   </label>
                   <input
@@ -409,7 +409,7 @@ export default function SubmitStory(): React.ReactElement {
                       updateBio("submitter_email", e.target.value)
                     }
                     placeholder="your@email.com"
-                    className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary"
+                    className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-primary bg-white dark:bg-dark-bg dark:text-dark-text"
                   />
                 </div>
               </div>
@@ -440,7 +440,7 @@ export default function SubmitStory(): React.ReactElement {
               >
                 ← Back
               </button>
-              <h2 className="font-alnevrada text-2xl text-primarydeep">
+              <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-white/80">
                 Archive document details
               </h2>
             </div>
@@ -448,14 +448,14 @@ export default function SubmitStory(): React.ReactElement {
             <div className="bg-secondary/5 border border-secondary/20 rounded-2xl p-4 mb-6">
               <p className="font-poppins text-sm text-secondary">
                 Archive submissions are for historical documents, photographs,
-                oral histories, and artworks. Describe what you have and we'll
-                be in touch about how to share the actual files.
+                oral histories, and artworks. Describe what you have and
+                we&apos;ll be in touch about how to share the actual files.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Title or name of the document / item
                 </label>
                 <input
@@ -465,11 +465,11 @@ export default function SubmitStory(): React.ReactElement {
                     updateArchive("subject_name", e.target.value)
                   }
                   placeholder="e.g. Letters of Funmilayo Ransome-Kuti, 1949"
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Country or region of origin
                 </label>
                 <input
@@ -477,11 +477,11 @@ export default function SubmitStory(): React.ReactElement {
                   value={archiveForm.country}
                   onChange={(e) => updateArchive("country", e.target.value)}
                   placeholder="e.g. Nigeria, West Africa"
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Source or attribution
                 </label>
                 <input
@@ -489,11 +489,11 @@ export default function SubmitStory(): React.ReactElement {
                   value={archiveForm.source}
                   onChange={(e) => updateArchive("source", e.target.value)}
                   placeholder="Where does this come from? Who created it?"
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Describe the document
                 </label>
                 <textarea
@@ -501,11 +501,11 @@ export default function SubmitStory(): React.ReactElement {
                   onChange={(e) => updateArchive("full_story", e.target.value)}
                   placeholder="What is this document? Why is it historically significant? What does it contain?"
                   rows={6}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
               <div>
-                <label className="font-poppins text-sm text-gray-700 block mb-1">
+                <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                   Why should this be in the archive?
                 </label>
                 <textarea
@@ -513,12 +513,12 @@ export default function SubmitStory(): React.ReactElement {
                   onChange={(e) => updateArchive("reason", e.target.value)}
                   placeholder="Tell us why this matters for African women's history..."
                   rows={3}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary resize-none"
+                  className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary resize-none bg-white dark:bg-dark-bg dark:text-dark-text"
                 />
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
               <h3 className="font-poppins text-sm text-gray-400 uppercase tracking-wide">
                 Your details
               </h3>
@@ -527,7 +527,7 @@ export default function SubmitStory(): React.ReactElement {
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-poppins text-sm text-gray-700 block mb-1">
+                  <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                     Your name
                   </label>
                   <input
@@ -537,11 +537,11 @@ export default function SubmitStory(): React.ReactElement {
                       updateArchive("submitter_name", e.target.value)
                     }
                     placeholder="Your name"
-                    className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary"
+                    className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary bg-white dark:bg-dark-bg dark:text-dark-text"
                   />
                 </div>
                 <div>
-                  <label className="font-poppins text-sm text-gray-700 block mb-1">
+                  <label className="font-poppins text-sm text-gray-700 dark:text-dark-muted block mb-1">
                     Your email <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -551,7 +551,7 @@ export default function SubmitStory(): React.ReactElement {
                       updateArchive("submitter_email", e.target.value)
                     }
                     placeholder="your@email.com"
-                    className="w-full border border-gray-200 rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary"
+                    className="w-full border border-gray-200 dark:border-dark-border rounded-lg px-4 py-2.5 font-poppins text-sm focus:outline-none focus:border-secondary bg-white dark:bg-dark-bg dark:text-dark-text"
                   />
                 </div>
               </div>
@@ -581,12 +581,12 @@ export default function SubmitStory(): React.ReactElement {
               >
                 ← Edit
               </button>
-              <h2 className="font-alnevrada text-2xl text-primarydeep">
+              <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text">
                 Review your submission
               </h2>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm space-y-3">
               {submissionType === "biography" ? (
                 <>
                   <Row label="Type" value="Full biography" />
@@ -665,11 +665,11 @@ export default function SubmitStory(): React.ReactElement {
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border-b border-gray-100 pb-3 last:border-0 last:pb-0">
-      <p className="font-poppins text-xs text-gray-400 uppercase tracking-wide mb-1">
+    <div className="border-b border-gray-100 dark:border-dark-border pb-3 last:border-0 last:pb-0">
+      <p className="font-poppins text-xs text-gray-400 dark:text-dark-muted uppercase tracking-wide mb-1">
         {label}
       </p>
-      <p className="font-poppins text-sm text-gray-700 whitespace-pre-wrap">
+      <p className="font-poppins text-sm text-gray-700 dark:text-dark-muted whitespace-pre-wrap">
         {value}
       </p>
     </div>
