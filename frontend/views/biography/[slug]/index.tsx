@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
+import ShareBookmark from "@/components/share-bookmark";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
@@ -42,6 +43,10 @@ export default function BiographyDetail(): React.ReactElement {
   const router = useRouter();
   const [bio, setBio] = useState<Biography | null>(null);
   const [loading, setLoading] = useState(true);
+  const [speaking, setSpeaking] = useState(false);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoice, setSelectedVoice] = useState<string>("");
+  const [showVoiceMenu, setShowVoiceMenu] = useState(false);
 
   useEffect(() => {
     const fetchBio = async () => {
@@ -59,6 +64,68 @@ export default function BiographyDetail(): React.ReactElement {
 
     if (params.slug) fetchBio();
   }, [params.slug]);
+  useEffect(() => {
+    const loadVoices = () => {
+      const available = window.speechSynthesis.getVoices();
+      // Filter to English voices only
+      const englishVoices = available.filter((v) => v.lang.startsWith("en"));
+      setVoices(englishVoices);
+      if (englishVoices.length > 0 && !selectedVoice) {
+        setSelectedVoice(englishVoices[0].name);
+      }
+    };
+
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, []);
+
+  const getReadableText = (): string => {
+    if (!bio) return "";
+    const parts = [
+      bio.name,
+      bio.summary,
+      bio.details?.basic_info?.full_name
+        ? `Full name: ${bio.details.basic_info.full_name}`
+        : "",
+      bio.details?.basic_info?.birth
+        ? `Born: ${bio.details.basic_info.birth}`
+        : "",
+      bio.details?.career_highlights?.length
+        ? `Career highlights: ${bio.details.career_highlights.join(". ")}`
+        : "",
+      bio.details?.honors?.length
+        ? `Honors and awards: ${bio.details.honors.join(". ")}`
+        : "",
+      bio.details?.full_summary || "",
+    ];
+    return parts.filter(Boolean).join(". ");
+  };
+
+  const handleSpeak = () => {
+    if (speaking) {
+      window.speechSynthesis.cancel();
+      setSpeaking(false);
+      return;
+    }
+
+    const text = getReadableText();
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    const voice = voices.find((v) => v.name === selectedVoice);
+    if (voice) utterance.voice = voice;
+
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    utterance.onend = () => setSpeaking(false);
+    utterance.onerror = () => setSpeaking(false);
+
+    window.speechSynthesis.speak(utterance);
+    setSpeaking(true);
+  };
 
   if (loading) {
     return (
@@ -114,13 +181,97 @@ export default function BiographyDetail(): React.ReactElement {
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 py-12 space-y-10">
-        {/* Back button */}
-        <button
-          onClick={() => router.back()}
-          className="flex items-center gap-2 text-sm font-poppins text-gray-400 dark:text-dark-muted hover:text-primary transition-colors"
-        >
-          ← Back
-        </button>
+        {/* Back button + Share/Bookmark */}
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <button
+            onClick={() => router.back()}
+            className="flex items-center gap-2 text-sm font-poppins text-gray-400 dark:text-dark-muted hover:text-primary transition-colors"
+          >
+            ← Back
+          </button>
+          <ShareBookmark title={bio.name} type="biography" id={bio.slug} />
+        </div>
+
+        {/* Audio narration */}
+        <div className="bg-white dark:bg-dark-surface rounded-2xl p-4 shadow-sm flex items-center gap-4 flex-wrap">
+          {/* Play/Stop button */}
+          <button
+            onClick={handleSpeak}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full font-poppins text-sm transition-colors ${
+              speaking
+                ? "bg-secondary text-white hover:bg-orange-700"
+                : "bg-primary text-white hover:bg-primarydeep"
+            }`}
+          >
+            {speaking ? (
+              <>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <rect x="6" y="4" width="4" height="16" />
+                  <rect x="14" y="4" width="4" height="16" />
+                </svg>
+                Stop narration
+              </>
+            ) : (
+              <>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                Listen to biography
+              </>
+            )}
+          </button>
+
+          {/* Voice selector */}
+          {voices.length > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="font-poppins text-xs text-gray-400 dark:text-dark-muted">
+                Voice:
+              </span>
+              <select
+                value={selectedVoice}
+                onChange={(e) => {
+                  setSelectedVoice(e.target.value);
+                  if (speaking) {
+                    window.speechSynthesis.cancel();
+                    setSpeaking(false);
+                  }
+                }}
+                className="font-poppins text-xs border border-gray-200 dark:border-dark-border rounded-lg px-2 py-1.5 bg-white dark:bg-dark-bg dark:text-dark-text focus:outline-none focus:border-primary max-w-[180px]"
+              >
+                {voices.map((v) => (
+                  <option key={v.name} value={v.name}>
+                    {v.name.replace(/^Microsoft |^Google /, "")}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {speaking && (
+            <div className="flex items-center gap-1">
+              {[...Array(4)].map((_, i) => (
+                <div
+                  key={i}
+                  className="w-1 bg-secondary rounded-full animate-bounce"
+                  style={{
+                    height: `${12 + i * 4}px`,
+                    animationDelay: `${i * 100}ms`,
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Summary */}
         <section className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-sm">
