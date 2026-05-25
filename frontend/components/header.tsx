@@ -144,9 +144,11 @@ export default function Header() {
             </Link>
           </nav>
           <div className="flex flex-col space-y-3 mt-4">
-            <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primarydeep hover:text-white transition">
-              Submit a story
-            </button>
+            <Link href="/submit-story">
+              <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primarydeep hover:text-white transition">
+                Submit a story
+              </button>
+            </Link>
             <Link href="/get-involved">
               <button className="w-full px-4 py-2 border border-secondary text-secondary rounded-lg hover:bg-secondary hover:text-white transition duration-500">
                 Get involved

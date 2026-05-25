@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
+import ShareBookmark from "@/components/share-bookmark";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
@@ -113,7 +114,7 @@ export default function BlogPostPage(): React.ReactElement {
   }
 
   return (
-    <div className="min-h-screen bg-ashwhite">
+    <div className="min-h-screen bg-ashwhite dark:bg-dark-bg transition-colors duration-300">
       {/* Hero */}
       <div className="relative w-full h-72 md:h-96 bg-primarydeep">
         {post.cover_image ? (
@@ -150,17 +151,19 @@ export default function BlogPostPage(): React.ReactElement {
 
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 py-12">
-        {/* Back button */}
-        <button
-          onClick={() => router.back()}
-          className="flex items-center gap-2 text-sm font-poppins text-gray-400 hover:text-primary transition-colors mb-10"
-        >
-          ← Back
-        </button>
-
+        {/* Back button + Share/Bookmark */}
+        <div className="flex items-center justify-between mb-10">
+          <button
+            onClick={() => router.back()}
+            className="flex items-center gap-2 text-sm font-poppins text-gray-400 dark:text-dark-muted hover:text-primary transition-colors"
+          >
+            ← Back
+          </button>
+          <ShareBookmark title={post.title} type="blog" id={post.slug} />
+        </div>
         {/* Excerpt */}
         {post.excerpt && (
-          <p className="font-lufga text-xl text-gray-600 leading-relaxed mb-10 pb-10 border-b border-gray-200">
+          <p className="font-lufga text-xl text-gray-600 dark:text-dark-muted leading-relaxed mb-10 pb-10 border-b border-gray-200 dark:border-dark-border">
             {post.excerpt}
           </p>
         )}
@@ -172,16 +175,18 @@ export default function BlogPostPage(): React.ReactElement {
         />
 
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-gray-200 flex items-center justify-between">
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-dark-border flex items-center justify-between">
           <div>
-            <p className="font-poppins text-xs text-gray-400 uppercase tracking-wide">
+            <p className="font-poppins text-xs text-gray-400 dark:text-secondary uppercase tracking-wide">
               Written by
             </p>
-            <p className="font-poppins text-gray-700">{post.author}</p>
+            <p className="font-poppins text-gray-700 dark:text-secondary">
+              {post.author}
+            </p>
           </div>
           <button
             onClick={() => router.push("/blog")}
-            className="px-5 py-2 rounded-full border border-primary text-primary font-poppins text-sm hover:bg-primary hover:text-white transition-colors"
+            className="px-5 py-2 rounded-full border border-primary dark:border-secondary text-primary dark:text-secondary font-poppins text-sm hover:bg-primary dark:hover:bg-dark-muted hover:text-white dark:hover:text-white dark:hover:border-dark-muted transition-colors"
           >
             More posts
           </button>

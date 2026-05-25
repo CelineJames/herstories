@@ -28,8 +28,13 @@ export default function WhyRemember(): React.ReactElement {
             />
           </Link>
         </div>
-        <div className="w-full bg-primary rounded-xl md:w-[40%] max-w-[400px] object-fit relative aspect-[1/1] group-hover:translate-x-2">
-          <Image src="/logo-white.png" alt="" fill />
+        <div className="w-full rounded-xl md:w-[40%] max-w-[400px] relative aspect-[1/1] overflow-hidden">
+          <Image
+            src="https://herstories-media.s3.us-east-1.amazonaws.com/assets/ourvision-image.jpg"
+            alt="Our vision"
+            fill
+            className="object-cover"
+          />
         </div>
       </div>
     </>

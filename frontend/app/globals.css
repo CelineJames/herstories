@@ -59,3 +59,26 @@ textarea,
 .ui {
   font-family: "Poppins", sans-serif;
 }
+
+/* Dark mode blog content */
+html.dark .prose-content p {
+  color: #c084b8;
+}
+
+html.dark .prose-content h2,
+html.dark .prose-content h3 {
+  color: #f5f0ff;
+}
+
+html.dark .prose-content strong {
+  color: #f5f0ff;
+}
+
+html.dark .prose-content em {
+  color: #c084b8;
+}
+
+html.dark .prose-content blockquote {
+  color: #c084b8;
+  border-left-color: #ad4a00;
+}

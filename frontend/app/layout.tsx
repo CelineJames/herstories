@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ChatWidget from "@/components/chat-widget";
 import { ThemeProvider } from "@/components/theme-provider";
+import CookieConsent from "@/components/cookie-consent";
 
 export const metadata: Metadata = {
   title: {
@@ -69,6 +70,7 @@ export default function RootLayout({
           <main className="pt-20">{children}</main>
           <Footer />
           <ChatWidget />
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>
