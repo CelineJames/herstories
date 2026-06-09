@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/container";
+import Pagination from "@/components/pagination";
 
 interface Biography {
   id: number;
@@ -161,49 +162,7 @@ export default function BiographyList() {
       )}
 
       {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center mt-8 gap-2">
-          <button
-            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-            disabled={page === 1}
-            className={`px-4 py-2 rounded transition-all ${
-              page === 1
-                ? "bg-primary/45 text-black/50 dark:text-white/50 cursor-not-allowed"
-                : "bg-primary text-white hover:bg-primary/90"
-            }`}
-          >
-            Previous
-          </button>
-
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => setPage(i + 1)}
-              className={`px-4 py-2 border rounded transition-all ${
-                page === i + 1
-                  ? "bg-primary text-white"
-                  : "bg-white dark:bg-dark-surface text-black dark:text-dark-text hover:bg-gray-100 dark:hover:bg-dark-border"
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-
-          <button
-            onClick={() =>
-              setPage((prev) => (prev < totalPages ? prev + 1 : prev))
-            }
-            disabled={page === totalPages}
-            className={`px-4 py-2 rounded transition-all ${
-              page === totalPages
-                ? "bg-primary/45 text-black/40 dark:text-white/50 cursor-not-allowed"
-                : "bg-primary text-white hover:bg-primary/90"
-            }`}
-          >
-            Next
-          </button>
-        </div>
-      )}
+      <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
     </Container>
   );
 }
