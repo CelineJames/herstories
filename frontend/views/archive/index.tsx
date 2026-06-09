@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Pagination from "@/components/pagination";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
@@ -297,27 +298,11 @@ export default function Archive(): React.ReactElement {
         )}
 
         {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-center gap-2 mt-12">
-            <button
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-              disabled={page === 1}
-              className="px-4 py-2 rounded-full border dark:border-dark-border font-poppins text-sm disabled:opacity-40 hover:border-primary dark:text-dark-text transition-colors"
-            >
-              Previous
-            </button>
-            <span className="px-4 py-2 text-sm font-poppins text-gray-500 dark:text-dark-muted">
-              {page} of {totalPages}
-            </span>
-            <button
-              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              disabled={page === totalPages}
-              className="px-4 py-2 rounded-full border font-poppins text-sm disabled:opacity-40 hover:border-primary transition-colors"
-            >
-              Next
-            </button>
-          </div>
-        )}
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+        />
       </div>
     </div>
   );
