@@ -322,7 +322,6 @@ export default function AdminBiographies(): React.ReactElement {
                     }
                     className="w-full border border-gray-200 rounded-lg px-3 py-2 font-poppins text-sm focus:outline-none focus:border-primary"
                   >
-                    <option value="">Select one</option>
                     <option value="Activist">Activist</option>
                     <option value="Politician">Politician</option>
                     <option value="Artist">Artist</option>
@@ -334,6 +333,11 @@ export default function AdminBiographies(): React.ReactElement {
                     <option value="Architect">Architect</option>
                     <option value="Feminist">Feminist</option>
                     <option value="Stateswoman">Stateswoman</option>
+                    <option value="Entrepreneur">Entrepreneur</option>
+                    <option value="Journalist">Journalist</option>
+                    <option value="Physician">Physician</option>
+                    <option value="Lawyer">Lawyer</option>
+                    <option value="Athlete">Athlete</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
