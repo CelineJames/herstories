@@ -44,17 +44,14 @@ export default function Pagination({ page, totalPages, onPageChange }: Props) {
   return (
     <div className="flex justify-center items-center mt-8 gap-1.5 flex-wrap">
       {/* Previous */}
-      <button
-        onClick={() => onPageChange(Math.max(page - 1, 1))}
-        disabled={page === 1}
-        className={`px-3 py-2 rounded-lg font-poppins text-sm transition-all ${
-          page === 1
-            ? "bg-primary/40 text-white/50 cursor-not-allowed"
-            : "bg-primary text-white hover:bg-primarydeep"
-        }`}
-      >
-        ← Prev
-      </button>
+      {page > 1 && (
+        <button
+          onClick={() => onPageChange(Math.max(page - 1, 1))}
+          className="px-3 py-2 rounded-lg font-poppins text-sm transition-all bg-primary text-white hover:bg-primarydeep"
+        >
+          ← Prev
+        </button>
+      )}
 
       {/* Page numbers */}
       {pages.map((p, idx) =>
@@ -81,17 +78,14 @@ export default function Pagination({ page, totalPages, onPageChange }: Props) {
       )}
 
       {/* Next */}
-      <button
-        onClick={() => onPageChange(Math.min(page + 1, totalPages))}
-        disabled={page === totalPages}
-        className={`px-3 py-2 rounded-lg font-poppins text-sm transition-all ${
-          page === totalPages
-            ? "bg-primary/40 text-white/50 cursor-not-allowed"
-            : "bg-primary text-white hover:bg-primarydeep"
-        }`}
-      >
-        Next →
-      </button>
+      {page < totalPages && (
+        <button
+          onClick={() => onPageChange(Math.min(page + 1, totalPages))}
+          className="px-3 py-2 rounded-lg font-poppins text-sm transition-all bg-primary text-white hover:bg-primarydeep"
+        >
+          Next →
+        </button>
+      )}
     </div>
   );
 }
