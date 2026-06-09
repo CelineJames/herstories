@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import ShareBookmark from "@/components/share-bookmark";
+import Link from "next/dist/client/link";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
@@ -46,7 +47,7 @@ export default function BiographyDetail(): React.ReactElement {
   const [speaking, setSpeaking] = useState(false);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<string>("");
-  const [showVoiceMenu, setShowVoiceMenu] = useState(false);
+  // const [showVoiceMenu, setShowVoiceMenu] = useState(false);
 
   useEffect(() => {
     const fetchBio = async () => {
@@ -443,16 +444,45 @@ export default function BiographyDetail(): React.ReactElement {
           )}
 
         {/* Full Summary */}
+        {/* Full Summary */}
         {bio.details?.full_summary && (
           <section className="bg-primarydeep dark:bg-dark-surface rounded-2xl p-8 transition-colors duration-300">
-            <h2 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-4">
+            <h2 className="font-alnevrada text-2xl text-white mb-4">
               Her story
             </h2>
-            <p className="font-lufga text-white/80  dark:text-dark-muted leading-relaxed">
+            <p className="font-lufga text-white/80 leading-relaxed">
               {bio.details.full_summary}
             </p>
           </section>
         )}
+
+        {/* Suggest a woman */}
+        <section className="bg-white dark:bg-dark-surface rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-dark-border text-center">
+          <p className="font-poppins text-xs text-gray-400 dark:text-dark-muted uppercase tracking-wide mb-3">
+            Know someone whose story should be here?
+          </p>
+          <h3 className="font-alnevrada text-2xl text-primarydeep dark:text-dark-text mb-3">
+            Every woman deserves to be documented
+          </h3>
+          <p className="font-poppins text-gray-500 dark:text-dark-muted text-sm mb-6 max-w-md mx-auto">
+            If you know an African woman whose story should be in HerStories, tell us about her.
+          </p>
+          <Link
+            href="/submit-story"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-poppins text-sm hover:bg-primarydeep transition-colors"
+          >
+            Submit a story
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12h14M12 5l7 7-7 7"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+        </section>
       </div>
     </div>
   );

@@ -120,13 +120,23 @@ export default function AdminBiographies(): React.ReactElement {
     setError("");
 
     try {
+      const S3 = "https://herstories-media.s3.us-east-1.amazonaws.com/assets";
+
       const payload = {
         name: form.name,
-        image: form.image,
+        image: form.image
+          ? form.image.startsWith("http")
+            ? form.image
+            : `${S3}/${form.image}`
+          : null,
         summary: form.summary,
         country: form.country.toLowerCase(),
         category: form.category,
-        flag: form.flag || null,
+        flag: form.flag
+          ? form.flag.startsWith("http")
+            ? form.flag
+            : `${S3}/${form.flag}`
+          : null,
         details: parsedDetails,
       };
 
@@ -337,7 +347,7 @@ export default function AdminBiographies(): React.ReactElement {
                     onChange={(e) =>
                       setForm({ ...form, image: e.target.value })
                     }
-                    placeholder="e.g. wangari.jpeg"
+                    placeholder="e.g. kudirat-abiola.jpeg"
                     className="w-full border border-gray-200 rounded-lg px-3 py-2 font-poppins text-sm focus:outline-none focus:border-primary"
                   />
                 </div>
