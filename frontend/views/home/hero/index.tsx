@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
-type heroItems = {
+type HeroItem = {
   image: string;
   quote: string;
   name: string;
 };
 
-const heroData: heroItems[] = [
+const HERO_DATA: HeroItem[] = [
   {
     image:
       "https://herstories-media.s3.us-east-1.amazonaws.com/assets/ngozi-iweala.jpg",
@@ -80,71 +82,119 @@ const heroData: heroItems[] = [
 
 export default function Hero(): React.ReactElement {
   const [current, setCurrent] = useState<number>(0);
-  const [fade, setFade] = useState<boolean>(true);
-  const [imagesReady, setImagesReady] = useState<boolean>(false);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  // Preload all images EXCEPT the first one
-  useEffect(() => {
-    const promises = heroData.slice(1).map((item) => {
-      return new Promise((resolve) => {
-        const img = new window.Image();
-        img.src = item.image;
-        img.onload = resolve;
-        img.onerror = resolve; // don't block if one fails
-      });
-    });
-
-    Promise.all(promises).then(() => setImagesReady(true));
+  const nextSlide = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % HERO_DATA.length);
   }, []);
 
-  // Only start slideshow once all images are preloaded
+  const prevSlide = useCallback(() => {
+    setCurrent((prev) => (prev === 0 ? HERO_DATA.length - 1 : prev - 1));
+  }, []);
+
+  // Automated slideshow with pause-on-hover capability
   useEffect(() => {
-    if (!imagesReady) return;
-
-    const fadeTimeout = setTimeout(() => setFade(false), 500);
-
+    if (isPaused) return;
     const interval = setInterval(() => {
-      setFade(true);
-      setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % heroData.length);
-        setFade(false);
-      }, 500);
-    }, 4000);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(fadeTimeout);
-    };
-  }, [imagesReady]);
-
-  const { image, quote, name } = heroData[current];
+      nextSlide();
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [isPaused, nextSlide]);
 
   return (
-    <div className="relative w-full h-[90vh] overflow-hidden">
-      {/* Background Image — first image shows immediately*/}
-      <Image
-        src={image}
-        alt={name}
-        fill
-        className={`object-fit md:object-cover transition-opacity duration-1000 ease-in-out ${
-          fade ? "opacity-0" : "opacity-100"
-        }`}
-        priority
-      />
+    <section
+      className="relative w-full min-h-[calc(100dvh-5rem)] h-[calc(100dvh-5rem)] overflow-hidden bg-gray-950"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Stacked Images for Butter-Smooth Cross-Fading */}
+      {HERO_DATA.map((item, index) => {
+        const isActive = index === current;
+        return (
+          <div
+            key={item.name}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+          >
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              sizes="100vw"
+              priority={index === 0}
+              className={`object-cover object-center transition-transform duration-[7000ms] ease-out ${
+                isActive ? "scale-105" : "scale-100"
+              }`}
+            />
+          </div>
+        );
+      })}
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 flex items-center justify-center px-6 text-center">
-        <div
-          className={`text-white max-w-2xl transition-opacity duration-1000 ease-in-out ${
-            fade ? "opacity-0" : "opacity-100"
-          }`}
-        >
-          <p className="text-xl md:text-3xl font-semibold italic mb-4">
-            &ldquo;{quote}&rdquo;
-          </p>
-          <p className="text-sm md:text-lg font-medium">— {name}</p>
+      <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/50 to-black/30 flex items-center justify-center px-4 sm:px-8">
+        <div className="max-w-5xl mx-auto text-center text-white flex flex-col items-center">
+          {/* Dynamic Quote */}
+          <div className="min-h-[140px] sm:min-h-[160px] flex flex-col items-center justify-center">
+            <p className="text-xl sm:text-3xl md:text-4xl font-serif font-medium leading-relaxed sm:leading-snug tracking-tight max-w-3xl drop-shadow-md">
+              &ldquo;{HERO_DATA[current].quote}&rdquo;
+            </p>
+            <h3 className="mt-4 text-base sm:text-lg font-medium tracking-wide drop-shadow">
+              - {HERO_DATA[current].name}
+            </h3>
+          </div>
+
+          {/* Call To Action Buttons */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/archive"
+              className="px-6 py-3 text-sm font-medium text-white bg-primary hover:bg-primarydeep rounded-lg shadow-lg transition-all duration-300 "
+            >
+              Explore Archive
+            </Link>
+            <Link
+              href="/submit-story"
+              className="px-6 py-3 text-sm font-medium text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 rounded-lg transition-all duration-300"
+            >
+              Submit a Story
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Manual Slide Controls */}
+      <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 z-30 flex items-center justify-between pointer-events-none">
+        <button
+          onClick={prevSlide}
+          className="p-2.5 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 transition-all pointer-events-auto hidden sm:flex"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="p-2.5 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 transition-all pointer-events-auto hidden sm:flex"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Slide Indicators / Progress Bar */}
+      <div className="absolute bottom-6 inset-x-0 z-30 flex justify-center items-center space-x-2">
+        {HERO_DATA.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              idx === current
+                ? "w-8 bg-primary"
+                : "w-2 bg-white/40 hover:bg-white/70"
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
